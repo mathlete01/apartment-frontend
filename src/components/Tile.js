@@ -1,6 +1,7 @@
 import React from 'react';
-// import Button from 'react-bootstrap/Button'
-// import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
 // import Carousel from 'react-bootstrap/Carousel'
 
 
@@ -11,31 +12,29 @@ import React from 'react';
 //use Card component from React Bootstrap
 //use carousel for the images 
 
-const Tile = ({images},{title},{price},{square_feet},{bed},{bath},{showTileDetails},{handleLike},{handleDislike}) => {
+const Tile = ({apartment}) => {
 // const Tile = (props) => {
-
+    // debugger
+    console.log(apartment.images)
     return (
-        <div>
-            <button onClick={showTileDetails}>Show Details</button>
-            <div>
-                <button> next image </button>
-                <div>{images}</div>
-                <button> prev image </button>
+        <Card style={{ width: '30rem' }} className="shadow">
+            <Card.Img className="cardImage" variant="top" src={apartment.images[0].url} />
+            <Container className="d-flex justify-content-between">
+                <span>{apartment.bedrooms} bedrooms</span>
+                <span>{apartment.bathrooms} bathrooms</span>
+                <span>o</span>
+                <span>{apartment.square_feet} square feet</span>
+                <span>${apartment.price}</span>
+            </Container>
+            <div className="d-flex justify-content-between">
+                <i class="far fa-thumbs-up"></i>
+                <h5 style={{width: '20rem'}}>{apartment.title}</h5>
+                <Button> Dislike </Button>
             </div>
-            <div>
-                <button onClick={handleLike}> Like </button>
-                <button onClick={handleDislike}> Dislike </button>
-            </div>
-            <div>
-                <span>{bed}</span>
-                <span>{bath}</span>
-                <span>{square_feet}</span>
-                <span>{price}</span>
-            </div>
-            <h3>{title}</h3>
-        </div>
+        </Card>
     );
 }
 
 export default Tile;
 
+// 

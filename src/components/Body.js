@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import Column from "./Column";
 import RowContainer from "./RowContainer";
 
-const API = "http://localhost:3000/listings";
+const API = "http://localhost:3000/neighborhoods";
 
 class Body extends Component {
 Z
     state = {
-        listings: [],
+        neighborhoods: [],
       };
 
     componentDidMount() {
@@ -17,7 +17,7 @@ Z
           .then((data) => {
             //? Did not need to make this an anonymous function
             this.setState({
-              listings: data,
+              neighborhoods: data,
             });
           })
         //   .then((data) => this.renderRows())
@@ -33,7 +33,7 @@ Z
       <div>
         Body
         <Column />
-        <RowContainer listings={this.state.listings}/>
+        <RowContainer neighborhoods={this.state.neighborhoods}/>
       </div>
     );
   }

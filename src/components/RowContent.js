@@ -6,9 +6,9 @@ class RowContent extends Component {
     return (
         <div>
             Row Content
+            {/* <Tile />
             <Tile />
-            <Tile />
-            <Tile />
+            <Tile /> */}
         </div>
     )
   }

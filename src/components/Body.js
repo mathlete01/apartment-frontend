@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Column from "./Column";
-import TierContainer from "./TierContainer";
+import RowContainer from "./RowContainer";
 import Container from "react-bootstrap/Container";
 
 const API = "http://localhost:3000/neighborhoods";
@@ -31,9 +31,9 @@ Z
 
   render() {
     return (
-      <Container>
+      <Container className="bodyClass" fluid>
         <Column />
-        <TierContainer neighborhoods={this.state.neighborhoods}/>
+        <RowContainer neighborhoods={this.state.neighborhoods}/>
       </Container>
     );
   }

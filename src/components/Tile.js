@@ -15,7 +15,7 @@ import Container from 'react-bootstrap/Container'
 const Tile = ({apartment}) => {
 // const Tile = (props) => {
     // debugger
-    console.log(apartment.images)
+    // console.log(apartment.images)
     return (
         <Card style={{ width: '30rem' }} className="shadow">
             <Card.Img className="cardImage" variant="top" src={apartment.images[0].url} />

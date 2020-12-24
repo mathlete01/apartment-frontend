@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Tier from "./Tier";
 import Container from "react-bootstrap/Container";
 
-class TierContainer extends Component {
+class RowContainer extends Component {
   buildTiers = () => {
     return this.props.neighborhoods.map((element) => (
       <Tier name={element.name} count= {element.apartments.length} apartments={element.apartments}/>
@@ -12,11 +12,11 @@ class TierContainer extends Component {
   render() {
     console.log(this.props.neighborhoods);
     return (
-      <Container>
+      <Container className="rowContainerClass" fluid>
         {this.buildTiers()}
       </Container>
     );
   }
 }
 
-export default TierContainer;
+export default RowContainer;

@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 class Column extends Component {
   render() {
     return (
-        <Container>
+        <Container className="columnClass">
         </Container>
     )
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import TierHeader from "./TierHeader";
-import TierContent from "./TierContent";
+import RowHeader from "./RowHeader";
+import RowContent from "./RowContent";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,13 +8,13 @@ import Col from "react-bootstrap/Col";
 class Tier extends Component {
   render() {
     return (
-      <Container fluid>
+      <Container fluid className="tierClass">
         <Row>
-          <Col md={4}>
-            <TierHeader name={this.props.name} count={this.props.count} />
-          </Col>
           <Col>
-            <TierContent apartments={this.props.apartments} />
+            <RowHeader name={this.props.name} count={this.props.count} />
+          </Col>
+          <Col lg="auto">
+            <RowContent name={this.props.name} apartments={this.props.apartments} />
           </Col>
         </Row>
       </Container>

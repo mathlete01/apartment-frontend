@@ -2,8 +2,20 @@
   text-align: center;
 }
 
-.columnClass {
-  align: center;
+.nav-color {
+  background-color: #f8f9fa;
+}
+
+#body-container {
+  padding: 0px;
+}
+
+.no-gutters {
+  padding: 0px;
+}
+
+.navbar-title {
+  padding: 0px 40px;
 }
 
 .rowClass {
@@ -17,4 +29,18 @@
   width: auto;
   /* max-height: 250px; */
   /* min-width: 250px; */
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: rgb(56, 56, 56);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.circle > p {
+  text-align: center;
+  color: white;
 }

@@ -27,12 +27,12 @@ class Row_ extends Component {
             <p className='font-weight-bold'>{ this.props.count }</p>
           </div>
         </Col>
-        <Col>
-          <TileContainer 
-            name={this.props.name}
-            apartments={this.props.apartments}
-          />
-        </Col>
+        <TileContainer 
+          name={this.props.name}
+          apartments={this.props.apartments}
+        />
+        {/* <Col className='d-flex no-gutters'>
+        </Col> */}
       </Row>
     );
   }

@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import RowHeader from "./RowHeader"
-import RowContent from "./RowContent"
+import RowHeader from "./RowHeader";
+import RowContent from "./RowContent";
 
 class Row extends Component {
   render() {
     return (
-    <div>
+      <div>
         Row
         <RowHeader />
-        <RowContent />
-    </div>)
+        <p>{this.props.name}</p>
+        <p>{this.props.count}</p>
+        <RowContent apartments={this.props.apartments} />
+      </div>
+    );
   }
 }
 

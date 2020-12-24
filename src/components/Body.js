@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Column from "./Column";
 import RowContainer from "./RowContainer";
-import Container from "react-bootstrap/Container";
+// import Container from "react-bootstrap/Container";
+import { Container, Col } from 'reactstrap';
 
 const API = "http://localhost:3000/neighborhoods";
 
@@ -16,14 +16,11 @@ Z
         fetch(API)
           .then((res) => res.json())
           .then((data) => {
-            //? Did not need to make this an anonymous function
             this.setState({
               neighborhoods: data,
             });
           })
-        //   .then((data) => this.renderRow_s())
           .then((data) => console.log(data))
-
           .catch((error) => {
             console.error("Error:", error);
           });
@@ -31,8 +28,8 @@ Z
 
   render() {
     return (
-      <Container className="bodyClass" fluid>
-        <Column />
+      <Container fluid>
+        <Col />
         <RowContainer neighborhoods={this.state.neighborhoods}/>
       </Container>
     );

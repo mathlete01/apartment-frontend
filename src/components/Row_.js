@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import RowHeader from "./RowHeader";
-import RowContent from "./RowContent";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import TileContainer from "./TileContainer";
+// import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+import { Container, Row, Col } from 'reactstrap';
 
 class Row_ extends Component {
   render() {
     return (
-      <Container fluid className="row_Class">
+      <Container fluid className="rowClass">
+      {/* <Container fluid > */}
         <Row>
-          <Col sm={1}>
+          <Col lg={1}>
             <RowHeader name={this.props.name} count={this.props.count} />
           </Col>
-          <Col sm={15}>
-            <RowContent name={this.props.name} apartments={this.props.apartments} />
+          <Col lg={1}>
+            <TileContainer name={this.props.name} apartments={this.props.apartments} />
           </Col>
         </Row>
       </Container>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Row_ from "./Row_";
-import Container from "react-bootstrap/Container";
+// import Container from "react-bootstrap/Container";
+import { Container } from 'reactstrap';
 
 class RowContainer extends Component {
   buildRow_s = () => {
@@ -12,7 +13,7 @@ class RowContainer extends Component {
   render() {
     console.log(this.props.neighborhoods);
     return (
-      <Container className="rowContainerClass" fluid>
+      <Container fluid >
         {this.buildRow_s()}
       </Container>
     );

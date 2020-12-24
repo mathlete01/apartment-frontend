@@ -1,12 +1,13 @@
-import Jumbotron from "react-bootstrap/Jumbotron";
+// import Jumbotron from "react-bootstrap/Jumbotron";
+import { Jumbotron } from "reactstrap";
+
 
 const Header = () => {
   return (
-  <Jumbotron className="headerClass">
+  <Jumbotron className="headerClass" >
     <h1>Apartment Browser</h1>
-    <p>
-      An innovative way to compare apartment listings by neighborhood and price.
-    </p>
+      Compare listings <b>in the same neighborhood at different price points</b>.
+      <br></br>Compare listings <b>at the same price point across different neighborhoods</b> 
   </Jumbotron>
   )
 };

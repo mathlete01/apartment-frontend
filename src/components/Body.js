@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Column from "./Column";
-import RowContainer from "./RowContainer";
+import TierContainer from "./TierContainer";
+import Container from "react-bootstrap/Container";
 
 const API = "http://localhost:3000/neighborhoods";
 
@@ -20,7 +21,7 @@ Z
               neighborhoods: data,
             });
           })
-        //   .then((data) => this.renderRows())
+        //   .then((data) => this.renderTiers())
           .then((data) => console.log(data))
 
           .catch((error) => {
@@ -30,11 +31,10 @@ Z
 
   render() {
     return (
-      <div>
-        Body
+      <Container>
         <Column />
-        <RowContainer neighborhoods={this.state.neighborhoods}/>
-      </div>
+        <TierContainer neighborhoods={this.state.neighborhoods}/>
+      </Container>
     );
   }
 }

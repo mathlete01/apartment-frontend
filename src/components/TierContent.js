@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Tile from "./Tile";
 
-class RowContent extends Component {
+class TierContent extends Component {
   buildTiles = () => {
     return this.props.apartments.map((apartment) => (
       <Tile 
@@ -19,11 +19,10 @@ class RowContent extends Component {
   render() {
     return (
       <div>
-        Row Content
         {/* {this.buildTiles()} */}
       </div>
     );
   }
 }
 
-export default RowContent;
+export default TierContent;

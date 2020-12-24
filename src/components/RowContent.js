@@ -20,7 +20,7 @@ class RowContent extends Component {
     return (
       <div>
         Row Content
-        {this.buildTiles()}
+        {/* {this.buildTiles()} */}
       </div>
     );
   }

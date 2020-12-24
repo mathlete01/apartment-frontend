@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import Tile from "./Tile";
-// import Container from "react-bootstrap/Container";
-import { Container } from 'reactstrap';
-import { ListGroup, ListGroupItem } from "reactstrap";
+import Container from "react-bootstrap/Container";
+// import { Container } from 'reactstrap';
+// import { ListGroup, ListGroupItem } from "reactstrap";
+import ListGroup from 'react-bootstrap/ListGroup'
 
 class TileContainer extends Component {
   buildTiles = () => {
     return this.props.apartments.map((apartment) => (
-      <ListGroupItem tag="a" href="#">
+      <ListGroup.Item tag="a" href="#">
         <Tile apartment={apartment} className="tiles" />
-      </ListGroupItem>
+      </ListGroup.Item>
     ));
   };
 

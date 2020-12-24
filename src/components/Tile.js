@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-// import Container from 'react-bootstrap/Container'
-import { Container } from 'reactstrap';
+import Container from 'react-bootstrap/Container'
+// import { Container } from 'reactstrap';
 // import Carousel from 'react-bootstrap/Carousel'
 
 

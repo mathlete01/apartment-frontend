@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import Row_ from "./Row_";
-// import Container from "react-bootstrap/Container";
-import { Container } from 'reactstrap';
+import Container from "react-bootstrap/Container";
+// import { Container } from 'reactstrap';
 
 class RowContainer extends Component {
   buildRow_s = () => {
     return this.props.neighborhoods.map((element) => (
-      <Row_ name={element.name} count= {element.apartments.length} apartments={element.apartments}/>
+      <Row_ 
+      name={element.name} 
+      count= {element.apartments.length} 
+      apartments={element.apartments} 
+      priceLow = {this.props.priceLow} 
+      priceHigh = {this.props.priceHigh}
+      filteredApartments = {this.props.filteredApartments}/>
     ));
   };
 

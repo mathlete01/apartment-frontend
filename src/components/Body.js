@@ -21,7 +21,7 @@ Z
               neighborhoods: data,
             });
           })
-        //   .then((data) => this.renderTiers())
+        //   .then((data) => this.renderRow_s())
           .then((data) => console.log(data))
 
           .catch((error) => {

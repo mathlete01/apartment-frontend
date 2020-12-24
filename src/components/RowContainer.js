@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Tier from "./Tier";
+import Row_ from "./Row_";
 import Container from "react-bootstrap/Container";
 
 class RowContainer extends Component {
-  buildTiers = () => {
+  buildRow_s = () => {
     return this.props.neighborhoods.map((element) => (
-      <Tier name={element.name} count= {element.apartments.length} apartments={element.apartments}/>
+      <Row_ name={element.name} count= {element.apartments.length} apartments={element.apartments}/>
     ));
   };
 
@@ -13,7 +13,7 @@ class RowContainer extends Component {
     console.log(this.props.neighborhoods);
     return (
       <Container className="rowContainerClass" fluid>
-        {this.buildTiers()}
+        {this.buildRow_s()}
       </Container>
     );
   }

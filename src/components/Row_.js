@@ -5,15 +5,15 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-class Tier extends Component {
+class Row_ extends Component {
   render() {
     return (
-      <Container fluid className="tierClass">
+      <Container fluid className="row_Class">
         <Row>
-          <Col>
+          <Col sm={1}>
             <RowHeader name={this.props.name} count={this.props.count} />
           </Col>
-          <Col lg="auto">
+          <Col sm={15}>
             <RowContent name={this.props.name} apartments={this.props.apartments} />
           </Col>
         </Row>
@@ -22,4 +22,4 @@ class Tier extends Component {
   }
 }
 
-export default Tier;
+export default Row_;

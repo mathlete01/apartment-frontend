@@ -5,11 +5,11 @@ class RowContainer extends Component {
     
     
     render() {
-        console.log(this.listings)
+      console.log(this.props.neighborhoods)
       return (
       <div>
           Row Container
-          <Row listings={this.listings}/>
+          <Row neighborhoods={this.props.neighborhoods}/>
           <Row />
           <Row />
       </div>)

@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import Carousel from 'react-bootstrap/Carousel'
+// import Button from 'react-bootstrap/Button'
+// import Card from 'react-bootstrap/Card'
+// import Carousel from 'react-bootstrap/Carousel'
 
 
 //description only available on TileDetails component
@@ -12,17 +12,19 @@ import Carousel from 'react-bootstrap/Carousel'
 //use carousel for the images 
 
 const Tile = ({images},{title},{price},{square_feet},{bed},{bath},{showTileDetails},{handleLike},{handleDislike}) => {
+// const Tile = (props) => {
+
     return (
         <div>
-            <Button onClick={showTileDetails}>Show Details</Button>
+            <button onClick={showTileDetails}>Show Details</button>
             <div>
-                <Button> next image </Button>
+                <button> next image </button>
                 <div>{images}</div>
-                <Button> prev image </Button>
+                <button> prev image </button>
             </div>
             <div>
-                <Button onClick={handleLike}> Like </Button>
-                <Button onClick={handleDislike}> Dislike </Button>
+                <button onClick={handleLike}> Like </button>
+                <button onClick={handleDislike}> Dislike </button>
             </div>
             <div>
                 <span>{bed}</span>

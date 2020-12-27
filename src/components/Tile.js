@@ -4,10 +4,9 @@ import Container from 'react-bootstrap/Container'
 import {FaRegThumbsUp} from "react-icons/fa"
 import {FaRegThumbsDown} from "react-icons/fa"
 import {BiRadioCircle} from "react-icons/bi"
-// import Carousel from 'react-bootstrap/Carousel'
 
 const Tile = ({apartment}) => {
-    console.log(apartment.images)
+
     return (
         <Card style={{ width: '30rem' }} className="shadow">
             <Card.Img className="cardImage" variant="top" src={apartment.images[0].url} />

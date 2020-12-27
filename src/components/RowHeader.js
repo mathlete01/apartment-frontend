@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import Badge from "react-bootstrap/Badge";
+import Container from 'react-bootstrap/Container'
+// import { Container } from 'reactstrap';
 
 class RowHeader extends Component {
   render() {
     return (
-        <div>
-            Row Header
-        </div>
-    )
+      <Container className="rowHeaderClass" >
+        <p>{this.props.name}</p>
+        <Badge variant="dark">{this.props.count}</Badge>
+      </Container>
+    );
   }
 }
 

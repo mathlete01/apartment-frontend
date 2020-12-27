@@ -1,19 +1,29 @@
 import React, { Component } from "react";
-import Row from "./Row"
+import Row_ from "./Row_";
+import Container from "react-bootstrap/Container";
+// import { Container } from 'reactstrap';
 
 class RowContainer extends Component {
-    
-    
-    render() {
-      console.log(this.props.neighborhoods)
-      return (
-      <div>
-          Row Container
-          <Row neighborhoods={this.props.neighborhoods}/>
-          <Row />
-          <Row />
-      </div>)
-    }
+  buildRow_s = () => {
+    return this.props.neighborhoods.map((element) => (
+      <Row_ 
+      name={element.name} 
+      count= {element.apartments.length} 
+      apartments={element.apartments} 
+      priceLow = {this.props.priceLow} 
+      priceHigh = {this.props.priceHigh}
+      filteredApartments = {this.props.filteredApartments}/>
+    ));
   };
 
-  export default RowContainer;
+  render() {
+    console.log(this.props.neighborhoods);
+    return (
+      <Container fluid >
+        {this.buildRow_s()}
+      </Container>
+    );
+  }
+}
+
+export default RowContainer;

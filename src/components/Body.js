@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 const API = "http://localhost:3000/neighborhoods";
 // const priceLow = 2000;
 // const priceHigh = 3000;
-const alphabetizeStart = "m";
+// const alphabetizeStart = "m";
 
 class Body extends Component {
   state = {
@@ -34,7 +34,7 @@ class Body extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container id='body-container' fluid>
         <Column />
         <RowContainer 
         neighborhoods={this.state.neighborhoods} 

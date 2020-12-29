@@ -9,7 +9,7 @@ function App() {
     <div>
       <header>
       </header>
-      <div>
+      <div id='page'>
         <Header />
         <Body />
       </div>

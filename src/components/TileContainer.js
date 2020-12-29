@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import Tile from "./Tile";
 import Container from "react-bootstrap/Container";
-// import { Container } from 'reactstrap';
-// import { ListGroup, ListGroupItem } from "reactstrap";
+import Col from "react-bootstrap/Col";
 import ListGroup from 'react-bootstrap/ListGroup'
 
 class TileContainer extends Component {
   buildTiles = () => {
-    return this.props.apartments.map((apartment) => (
-      <ListGroup.Item tag="a" href="#">
+    return this.props.apartments.slice(0,3).map((apartment) => (
         <Tile apartment={apartment} className="tiles" />
-      </ListGroup.Item>
     ));
   };
 
   render() {
     return (
-      <Container>
-        <ListGroup horizontal="lg">{this.buildTiles()}</ListGroup>
-      </Container>
+      <Col className='tile-container d-flex justify-content-start border-bottom'>
+        { this.buildTiles() }
+      </Col>
     );
   }
 }

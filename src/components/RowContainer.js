@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import Row_ from "./Row_";
+import {default as TileRow} from "./Row_";
 import Container from "react-bootstrap/Container";
 // import { Container } from 'reactstrap';
 
 class RowContainer extends Component {
   buildRow_s = () => {
-    return this.props.neighborhoods.map((element) => (
-      <Row_ 
+    return this.props.neighborhoods.slice(0,2).map((element) => (
+      <TileRow 
       name={element.name} 
       count= {element.apartments.length} 
       apartments={element.apartments} 
-      priceLow = {this.props.priceLow} 
-      priceHigh = {this.props.priceHigh}
       filteredApartments = {this.props.filteredApartments}/>
     ));
   };

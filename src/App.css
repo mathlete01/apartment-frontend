@@ -54,3 +54,18 @@
 .tile-container > .card {
   margin: 0 0.35rem;
 }
+
+.notdisplayed {
+  display: none;
+}
+
+.displayed {
+  display: flex;
+  height: 20px;
+  margin: auto;
+}
+
+h5 {
+  width: 20rem;
+  text-align: center;
+}

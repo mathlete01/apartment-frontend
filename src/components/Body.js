@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import RowContainer from "./RowContainer";
-import Column from "./Column"
+import Column from "./Column";
 import Container from "react-bootstrap/Container";
-// import { Container } from "reactstrap";
 
 const API = "http://localhost:3000/neighborhoods";
-// const priceLow = 2000;
-// const priceHigh = 3000;
-const alphabetizeStart = "m";
+// const alphabetizeStart = "m";
 
 class Body extends Component {
   state = {
     neighborhoods: [],
+    selectedNeighborhoods: [],
     priceLow: 2000,
     priceHigh: 3000,
-    filteredApartments: []
+    // filteredApartments: []
   };
 
   componentDidMount() {
-    console.log(`* componentDidMount`);
     fetch(API)
       .then((res) => res.json())
       .then((data) => {
@@ -26,22 +23,27 @@ class Body extends Component {
           neighborhoods: data,
         });
       })
-      .then((data) => console.log(data))
       .catch((error) => {
         console.error("Error:", error);
       });
   }
 
+  filterApartments = () => {
+    console.log("filterApartments called");
+    // console.log(this.state.neighborhoods);
+    return this.state.neighborhoods.filter(element => 
+      element.apartments.some(apt => apt.price >= this.state.priceLow) &&
+        element.apartments.some(apt => apt.price <= this.state.priceHigh)
+    )
+  }
+
+
   render() {
     return (
       <Container fluid>
         <Column />
-        <RowContainer 
-        neighborhoods={this.state.neighborhoods} 
-        priceLow={this.state.priceLow} 
-        priceHigh={this.state.priceHigh}
-        // filteredApartments = {this.state.filteredApartments}
-        />
+        <RowContainer neighborhoods={this.filterApartments()} />
+        {/* <RowContainer neighborhoods={this.state.neighborhoods} /> */}
       </Container>
     );
   }

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
-// import { Container, Row, Col } from "reactstrap";
-// import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'

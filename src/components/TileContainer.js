@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Tile from "./Tile";
 import Container from "react-bootstrap/Container";
-// import { Container } from 'reactstrap';
-// import { ListGroup, ListGroupItem } from "reactstrap";
 import ListGroup from 'react-bootstrap/ListGroup'
 
 class TileContainer extends Component {

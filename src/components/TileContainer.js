@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Tile from "./Tile";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-// import { Container } from 'reactstrap';
-// import { ListGroup, ListGroupItem } from "reactstrap";
 import ListGroup from 'react-bootstrap/ListGroup'
 
 class TileContainer extends Component {
@@ -15,7 +13,7 @@ class TileContainer extends Component {
 
   render() {
     return (
-      <Col className='d-flex justify-content-start border-bottom'>
+      <Col className='tile-container d-flex justify-content-start border-bottom'>
         { this.buildTiles() }
       </Col>
     );

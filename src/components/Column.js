@@ -2,13 +2,21 @@ import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Form from 'react-bootstrap/Form'
+// import Form from 'react-bootstrap/Form'
 
 class Column extends Component {
   render() {
     return (
-      <Container className="columnClass" fluid>
-        <Form>
+      <Container className="nav-color border-bottom" bg='light' fluid>
+        <Row>
+          <Col md={1} className='border-bottom border-right text-center'>
+            <div>Filters: /|\ </div>
+          </Col>
+          <Col className='border-bottom text-center'>
+            <div>Range: $MIN - $MAX</div>
+          </Col>
+        </Row>
+        {/* <Form>
           <Row form>
             <Col lg={2}>
               <Form.Group>
@@ -29,10 +37,11 @@ class Column extends Component {
               </Form.Group>
             </Col>
           </Row>
-        </Form>
+        </Form> */}
       </Container>
     );
   }
 }
+
 
 export default Column;

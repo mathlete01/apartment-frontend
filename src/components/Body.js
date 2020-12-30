@@ -44,17 +44,33 @@ class Body extends Component {
           apt.price >= this.state.priceLow && apt.price <= this.state.priceHigh
       ),
     }));
-    console.log(newArr);
-    // return newArr
+    return newArr;
+  };
+
+  updatePriceLow = (low) => {
+    console.log(low);
+    this.setState({
+      priceLow: low,
+    });
+  };
+  updatePriceHigh = (high) => {
+    console.log(high);
+    this.setState({
+      priceHigh: high,
+    });
   };
 
   render() {
     return (
-      <Container id='body-container' className='d-flex flex-column' fluid>
-        <Column />
-        {this.filterNeighborhoodsByPrice()}
+      <Container id="body-container" className='d-flex flex-column' fluid>
+        <Column
+          priceLow={this.state.priceLow}
+          priceHigh={this.state.priceHigh}
+          updatePriceLow={this.updatePriceLow}
+          updatePriceHigh={this.updatePriceHigh}
+        />
         <RowContainer
-          neighborhoods={this.state.neighborhoods}
+          neighborhoods={this.filterNeighborhoodsByPrice()}
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
         />

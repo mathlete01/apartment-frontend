@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-// import Form from 'react-bootstrap/Form'
+import PriceFilter from './PriceFilter';
 
 class Column extends Component {
   render() {
@@ -13,7 +13,15 @@ class Column extends Component {
             <div>Filters</div>
           </Col>
           <Col className='border-bottom text-center'>
-            <div>Range: $MIN - $MAX</div>
+            <div>
+                Range
+                <PriceFilter 
+                priceLow = {this.props.priceLow}
+                priceHigh = {this.props.priceHigh}
+                updatePriceLow = {this.props.updatePriceLow}
+                updatePriceHigh = {this.props.updatePriceHigh}
+                />
+              </div>
           </Col>
         </Row>
       </Container>

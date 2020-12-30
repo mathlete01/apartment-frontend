@@ -19,9 +19,8 @@ class Row_ extends Component {
 
   render() {
     return (
-      <Row className="border-bottom">
+      <Row className="tile-row border-bottom">
         <Col className='border-right nav-color d-flex flex-column align-items-center justify-content-center' md={1}>
-          {/* <RowHeader name={this.props.name} count={this.props.count} /> */}
           <p className='text-center'>{ this.props.name }</p>
           <div className='circle shadow'>
             <p className='font-weight-bold'>{ this.props.count }</p>

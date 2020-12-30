@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 // import { Container } from 'reactstrap';
 
 class RowContainer extends Component {
-  buildRow_s = () => {
+  buildRows = () => {
     return this.props.neighborhoods.slice(0,2).map((element) => (
       <TileRow 
       name={element.name} 
@@ -15,10 +15,9 @@ class RowContainer extends Component {
   };
 
   render() {
-    console.log(this.props.neighborhoods);
     return (
-      <Container fluid >
-        {this.buildRow_s()}
+      <Container id='row-container' className='mt-auto d-flex flex-column justify-content-between' fluid>
+        {this.buildRows()}
       </Container>
     );
   }

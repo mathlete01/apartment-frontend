@@ -34,7 +34,7 @@ class Body extends Component {
 
   render() {
     return (
-      <Container id='body-container' fluid>
+      <Container id='body-container' className='d-flex flex-column' fluid>
         <Column />
         <RowContainer 
         neighborhoods={this.state.neighborhoods} 

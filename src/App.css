@@ -1,7 +1,25 @@
-#page {
+body {
+  height: 100vh;
   display: flex;
   flex-flow: column;
-  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100vh;
+}
+
+#page {
+  height: 100vh;
+}
+
+#row-container {
+  flex-grow: 1;
+}
+
+#body-container {
+  flex-grow: 1;
+  padding: 0px;
 }
 
 .rowHeaderClass {
@@ -10,10 +28,6 @@
 
 .nav-color {
   background-color: #f8f9fa;
-}
-
-#body-container {
-  padding: 0px;
 }
 
 .no-gutters {
@@ -52,5 +66,9 @@
 }
 
 .tile-container > .card {
-  margin: 0 0.35rem;
+  margin: 0.4rem 0.4rem;
+}
+
+.tile-row {
+  flex-grow: 1;
 }

@@ -10,16 +10,16 @@ const Tile = ({apartment}) => {
     return (
         <Card style={{ width: '30rem' }} className="shadow">
             <Card.Img className="cardImage" variant="top" src={apartment.images[0].url} />
-            <Container className="d-flex justify-content-between border-bottom">
+            <Container className="spec-container d-flex justify-content-between align-items-center border-bottom">
                 <span>{apartment.bedrooms} bed {apartment.bathrooms} bath</span>
                 <BiRadioCircle/>
                 <span>{apartment.square_feet} sq. ft.</span>
                 <BiRadioCircle/>
                 <span>${apartment.price}</span>
             </Container>
-            <div className="d-flex justify-content-between flex-grow-1 align-items-center">    
+            <div className="d-flex justify-content-between align-items-center">    
                 <FaRegThumbsUp color="green" size="35px"/>
-                <h6 style={{width: '20rem'}}>{apartment.title}</h6>
+                <h6 className='card-title' style={{width: '20rem'}}>{apartment.title}</h6>
                 <FaRegThumbsDown color="red" size="35px"/>
             </div>
         </Card>

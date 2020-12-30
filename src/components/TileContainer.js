@@ -13,9 +13,12 @@ class TileContainer extends Component {
 
   render() {
     return (
-      <Col className='tile-container d-flex justify-content-start border-bottom'>
+      // <Col className='tile-container d-flex justify-content-around border-bottom'>
+      //   { this.buildTiles() }
+      // </Col>
+      <Container className='tile-container' >
         { this.buildTiles() }
-      </Col>
+      </Container>
     );
   }
 }

@@ -15,9 +15,8 @@ class RowContainer extends Component {
   };
 
   render() {
-    console.log(this.props.neighborhoods);
     return (
-      <Container fluid >
+      <Container id='row-container' fluid>
         {this.buildRow_s()}
       </Container>
     );

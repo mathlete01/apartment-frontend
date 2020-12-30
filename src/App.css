@@ -1,7 +1,21 @@
-#page {
+body {
+  height: 100vh;
   display: flex;
   flex-flow: column;
+  margin: 0;
+}
+
+#root {
   height: 100%;
+}
+
+#page {
+  height: 100%;
+  border: 1px solid blue; 
+}
+
+#row-container {
+  border: 1px solid pink;
 }
 
 .rowHeaderClass {
@@ -14,6 +28,8 @@
 
 #body-container {
   padding: 0px;
+  flex-grow: 1;
+  /* border: 1px solid pink; */
 }
 
 .no-gutters {
@@ -52,5 +68,5 @@
 }
 
 .tile-container > .card {
-  margin: 0 0.35rem;
+  margin: 0.4rem 0.4rem;
 }

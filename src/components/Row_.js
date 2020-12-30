@@ -31,8 +31,6 @@ class Row_ extends Component {
           name={this.props.name}
           apartments={this.props.apartments}
         />
-        {/* <Col className='d-flex no-gutters'>
-        </Col> */}
       </Row>
     );
   }

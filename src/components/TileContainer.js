@@ -7,7 +7,10 @@ import ListGroup from 'react-bootstrap/ListGroup'
 class TileContainer extends Component {
   buildTiles = () => {
     return this.props.apartments.slice(0,3).map((apartment) => (
-        <Tile apartment={apartment} className="tiles" />
+        <Tile 
+        apartment={apartment} className="tiles"
+        key = {apartment.id} 
+        />
     ));
   };
 

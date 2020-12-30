@@ -1,21 +1,11 @@
 import React, { Component } from "react";
-import RowHeader from "./RowHeader";
+// import RowHeader from "./RowHeader";
 import TileContainer from "./TileContainer";
-import Container from "react-bootstrap/Container";
+// import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// import { Container, Row, Col } from "reactstrap";
 
 class Row_ extends Component {
-  
-  // filterApartments = () => {
-  //   this.setState({
-  //       filteredApartments: this.props.apartments.filter(
-  //         (apt) => apt.price >= this.props.priceLow && apt.price <= this.props.priceHigh
-  //         ),
-  //     })
-  //     return this.props.filteredApartments
-  // };
 
   render() {
     return (
@@ -30,9 +20,12 @@ class Row_ extends Component {
           name={this.props.name}
           apartments={this.props.apartments}
         />
+        {/* <Col className='d-flex no-gutters'>
+        </Col> */}
       </Row>
     );
   }
 }
+
 
 export default Row_;

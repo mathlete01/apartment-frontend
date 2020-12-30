@@ -10,7 +10,8 @@ class RowContainer extends Component {
       name={element.name} 
       count= {element.apartments.length} 
       apartments={element.apartments} 
-      filteredApartments = {this.props.filteredApartments}/>
+      filteredApartments = {this.props.filteredApartments}
+      key = {element.id}/>
     ));
   };
 

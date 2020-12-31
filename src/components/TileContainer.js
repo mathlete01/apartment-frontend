@@ -4,10 +4,11 @@ import Container from "react-bootstrap/Container";
 
 class TileContainer extends Component {
   buildTiles = () => {
-    return this.props.apartments.slice(0,3).map((apartment) => (
+    const startIndex = this.props.page * 3 
+    return this.props.apartments.slice(startIndex, startIndex + 3).map((apartment) => (
         <Tile 
-        apartment={apartment} className="tiles"
-        key = {apartment.id} 
+          apartment={apartment} className="tiles"
+          key = {apartment.id} 
         />
     ));
   };

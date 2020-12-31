@@ -6,6 +6,24 @@ import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 
 class Row_ extends Component {
 
+  state = {
+    page: 0
+  }
+
+  changePageUp = () => {
+    if (this.state.page >= Math.floor(this.props.apartments.length / 3)) return
+    this.setState( prevState => {
+      return { page: prevState.page + 1 }
+    })
+  }
+
+  changePageDown = () => {
+    if (this.state.page <= 0) return
+    this.setState( prevState => {
+      return { page: prevState.page - 1 }
+    })
+  }
+
   render() {
     return (
       <Row className="tile-row border-bottom">
@@ -16,12 +34,17 @@ class Row_ extends Component {
           </div>
         </Col>
         <div className='tile-arrow-container d-flex justify-content-around'>
-          <div className='arrow-box-left d-flex align-items-center justify-content-center'><BsChevronDoubleLeft size='3em' /></div>
+          <div className='arrow-box-left d-flex align-items-center justify-content-center' onClick={ this.changePageDown }>
+            <BsChevronDoubleLeft size='3em' />
+          </div>
           <TileContainer 
             name={this.props.name}
             apartments={this.props.apartments}
+            page={this.state.page}
           />
-          <div className='arrow-box-right d-flex align-items-center justify-content-center'><BsChevronDoubleRight size='3em' /></div>
+          <div className='arrow-box-right d-flex align-items-center justify-content-center' onClick={ this.changePageUp }>
+            <BsChevronDoubleRight size='3em' />
+          </div>
         </div>
       </Row>
     );

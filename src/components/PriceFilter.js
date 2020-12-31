@@ -3,20 +3,20 @@ import React from 'react';
 class PriceFilter extends React.Component {
     render() {
     return (
-      <div>
-        <form>
-          <input
-            type="text"
-            onChange={event => this.props.updatePriceLow(event.target.value)}
-            placeholder={this.props.priceLow}
+      <form>
+        <span>$</span>
+        <input
+          type="text"
+          onChange={event => this.props.updatePriceLow(event.target.value)}
+          placeholder={this.props.priceLow}
           />
-          <input
-            type="text"
-            onChange={event => this.props.updatePriceHigh(event.target.value)}
-            placeholder={this.props.priceHigh}
-          />
-        </form>
-      </div>
+        <span> - $</span>
+        <input
+          type="text"
+          onChange={event => this.props.updatePriceHigh(event.target.value)}
+          placeholder={this.props.priceHigh}
+        />
+      </form>
     )
   }
 }

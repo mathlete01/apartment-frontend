@@ -89,3 +89,7 @@ body {
 .card-title {
   font-size: 0.85rem;
 }
+
+.filter-bar > * {
+  margin: auto 5px;
+}

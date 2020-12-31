@@ -12,16 +12,14 @@ class Column extends Component {
           <Col md={1} className='border-bottom border-right text-center'>
             <div>Filters</div>
           </Col>
-          <Col className='border-bottom text-center'>
-            <div>
-                Range
-                <PriceFilter 
-                priceLow = {this.props.priceLow}
-                priceHigh = {this.props.priceHigh}
-                updatePriceLow = {this.props.updatePriceLow}
-                updatePriceHigh = {this.props.updatePriceHigh}
-                />
-              </div>
+          <Col className='filter-bar border-bottom d-flex flex-row justify-content-center'>
+              <p>Range</p>
+              <PriceFilter 
+              priceLow = {this.props.priceLow}
+              priceHigh = {this.props.priceHigh}
+              updatePriceLow = {this.props.updatePriceLow}
+              updatePriceHigh = {this.props.updatePriceHigh}
+              />
           </Col>
         </Row>
       </Container>

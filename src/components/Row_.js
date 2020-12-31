@@ -11,7 +11,7 @@ class Row_ extends Component {
   }
 
   changePageUp = () => {
-    if (this.state.page >= Math.floor(this.props.apartments.length / 3)) return
+    if (this.state.page >= Math.ceil((this.props.apartments.length / 3) - 1)) return
     this.setState( prevState => {
       return { page: prevState.page + 1 }
     })

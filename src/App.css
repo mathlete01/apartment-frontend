@@ -100,7 +100,8 @@ body {
 }
 
 .arrow-box-right:hover {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #f8f9fa )
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #f8f9fa );
+  cursor: pointer;
 }
 
 .arrow-box-left > * {
@@ -108,7 +109,8 @@ body {
 }
 
 .arrow-box-left:hover {
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #f8f9fa )
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #f8f9fa );
+  cursor: pointer;
 }
 
 .tile-arrow-container {

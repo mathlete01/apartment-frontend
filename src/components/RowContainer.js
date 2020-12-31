@@ -5,15 +5,18 @@ import Container from "react-bootstrap/Container";
 
 class RowContainer extends Component {
   buildRows = () => {
-    return this.props.neighborhoods.slice(0,3).map((element) => (
+    return this.props.neighborhoods.map((element) => (
       <TileRow 
       name={element.name} 
       count= {element.apartments.length} 
-      apartments={element.apartments} 
-      filteredApartments = {this.props.filteredApartments}
+      apartments={this.sortApartments(element.apartments)}
       key = {element.id}/>
     ));
   };
+
+  sortApartments = ( apartmentArray ) => {
+    return apartmentArray.sort( (a,b) => a.price - b.price )
+  }
 
   render() {
     return (

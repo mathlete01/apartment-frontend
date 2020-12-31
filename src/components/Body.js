@@ -10,8 +10,8 @@ class Body extends Component {
   state = {
     neighborhoods: [],
     selectedNeighborhoodIDs: [],
-    priceLow: 2000,
-    priceHigh: 3000,
+    priceLow: 0,
+    priceHigh: 20000,
   };
 
   componentDidMount() {
@@ -26,6 +26,12 @@ class Body extends Component {
       .catch((error) => {
         console.error("Error:", error);
       });
+  }
+
+  allNeighborhoodIDsAndNames = () => {
+    return this.state.neighborhoods.map( neighborhood => {
+      return { id: neighborhood.id, name: neighborhood.name }
+    })
   }
 
   selectNeighborhoods = () => {
@@ -47,6 +53,10 @@ class Body extends Component {
     return newArr;
   };
 
+  updateSelectedNeighborhoods = (neighborhoodArray) => {
+    this.setState({ selectedNeighborhoodIDs: neighborhoodArray })
+  }
+
   updatePriceLow = (low) => {
     console.log(low);
     this.setState({
@@ -64,6 +74,9 @@ class Body extends Component {
     return (
       <Container id="body-container" className='d-flex flex-column' fluid>
         <Column
+          neighborhoods={this.allNeighborhoodIDsAndNames()}
+          handleNeighborhoodChange={this.updateSelectedNeighborhoods}
+          selectedIDs={this.state.selectedNeighborhoodIDs}
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
           updatePriceLow={this.updatePriceLow}

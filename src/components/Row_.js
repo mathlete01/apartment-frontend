@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-// import RowHeader from "./RowHeader";
 import TileContainer from "./TileContainer";
-// import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 
 class Row_ extends Component {
 
@@ -16,12 +15,14 @@ class Row_ extends Component {
             <p className='font-weight-bold'>{ this.props.count }</p>
           </div>
         </Col>
-        <TileContainer 
-          name={this.props.name}
-          apartments={this.props.apartments}
-        />
-        {/* <Col className='d-flex no-gutters'>
-        </Col> */}
+        <div className='tile-arrow-container d-flex justify-content-around'>
+          <div className='arrow-box-left d-flex align-items-center justify-content-center'><BsChevronDoubleLeft size='3em' /></div>
+          <TileContainer 
+            name={this.props.name}
+            apartments={this.props.apartments}
+          />
+          <div className='arrow-box-right d-flex align-items-center justify-content-center'><BsChevronDoubleRight size='3em' /></div>
+        </div>
       </Row>
     );
   }

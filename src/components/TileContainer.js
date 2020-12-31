@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Tile from "./Tile";
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import ListGroup from 'react-bootstrap/ListGroup'
 
 class TileContainer extends Component {
   buildTiles = () => {

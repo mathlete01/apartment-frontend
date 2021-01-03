@@ -13,6 +13,15 @@ class RowContainer extends Component {
       key = {element.id}/>
     ));
   };
+  buildRowsR = () => {
+    return this.props.neighborhoodsR.map((element) => (
+      <TileRow 
+      name={element.name} 
+      count= {element.apartments.length} 
+      apartments={this.sortApartments(element.apartments)}
+      key = {element.id}/>
+    ));
+  };
 
   sortApartments = ( apartmentArray ) => {
     return apartmentArray.sort( (a,b) => a.price - b.price )
@@ -22,6 +31,7 @@ class RowContainer extends Component {
     return (
       <Container id='row-container' className='mt-auto d-flex flex-column justify-content-between' fluid>
         {this.buildRows()}
+        {this.buildRowsR()}
       </Container>
     );
   }

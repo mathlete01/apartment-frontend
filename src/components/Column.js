@@ -18,10 +18,10 @@ class Column extends Component {
             />
           </Col>
           <Col className='filter-bar border-bottom d-flex flex-row justify-content-center'>
-              <p>Range</p>
+              <p>Price Point</p>
               <PriceFilter 
                 priceLow = {this.props.priceLow}
-                priceHigh = {this.props.priceHigh}
+                priceHigh = {parseInt(this.props.priceLow) + 99}
                 updatePriceLow = {this.props.updatePriceLow}
                 updatePriceHigh = {this.props.updatePriceHigh}
               />

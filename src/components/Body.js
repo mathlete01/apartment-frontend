@@ -10,8 +10,8 @@ class Body extends Component {
   state = {
     neighborhoods: [],
     selectedNeighborhoodIDs: [],
-    priceLow: 0,
-    priceHigh: 20000,
+    priceLow: 3000,
+    priceHigh: 3099,
   };
 
   componentDidMount() {
@@ -29,10 +29,10 @@ class Body extends Component {
   }
 
   allNeighborhoodIDsAndNames = () => {
-    return this.state.neighborhoods.map( neighborhood => {
-      return { id: neighborhood.id, name: neighborhood.name }
-    })
-  }
+    return this.state.neighborhoods.map((neighborhood) => {
+      return { id: neighborhood.id, name: neighborhood.name };
+    });
+  };
 
   selectNeighborhoods = () => {
     let selectedNeighborhoods = this.state.selectedNeighborhoodIDs.map((id) =>
@@ -41,6 +41,30 @@ class Body extends Component {
     return selectedNeighborhoods;
   };
 
+  filterNeighborhoodsByPriceL = () => {
+    let newArr = this.selectNeighborhoods().map((neighborhood) => ({
+      id: neighborhood.id,
+      name: neighborhood.name,
+      apartments: neighborhood.apartments.filter(
+        (apt) =>
+          apt.price >= parseInt(this.state.priceLow) - 100 && apt.price <= parseInt(this.state.priceHigh) -100
+      ),
+    }));
+    return newArr;
+  };
+
+  filterNeighborhoodsByPriceR = () => {
+    let newArr = this.selectNeighborhoods().map((neighborhood) => ({
+      id: neighborhood.id,
+      name: neighborhood.name,
+      apartments: neighborhood.apartments.filter(
+        (apt) =>
+          apt.price >= parseInt(this.state.priceLow) + 100 && apt.price <= parseInt(this.state.priceHigh) + 100
+      ),
+    }));
+    return newArr;
+  };
+  
   filterNeighborhoodsByPrice = () => {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
@@ -54,8 +78,8 @@ class Body extends Component {
   };
 
   updateSelectedNeighborhoods = (neighborhoodArray) => {
-    this.setState({ selectedNeighborhoodIDs: neighborhoodArray })
-  }
+    this.setState({ selectedNeighborhoodIDs: neighborhoodArray });
+  };
 
   updatePriceLow = (low) => {
     console.log(low);
@@ -72,7 +96,7 @@ class Body extends Component {
 
   render() {
     return (
-      <Container id="body-container" className='d-flex flex-column' fluid>
+      <Container id="body-container" className="d-flex flex-column" fluid>
         <Column
           neighborhoods={this.allNeighborhoodIDsAndNames()}
           handleNeighborhoodChange={this.updateSelectedNeighborhoods}
@@ -84,6 +108,8 @@ class Body extends Component {
         />
         <RowContainer
           neighborhoods={this.filterNeighborhoodsByPrice()}
+          neighborhoodsL={this.filterNeighborhoodsByPriceL()}
+          neighborhoodsR={this.filterNeighborhoodsByPriceR()}
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
         />

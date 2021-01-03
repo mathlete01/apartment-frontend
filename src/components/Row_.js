@@ -43,17 +43,17 @@ class Row_ extends Component {
           >
             <BsChevronDoubleLeft size="3em" />
           </div>
+          {/* <TileContainer
+            name={this.props.name}
+            apartments={this.props.apartmentsL}
+            page={this.state.page}
+          /> */}
           <TileContainer
             name={this.props.name}
             apartments={this.props.apartments}
             page={this.state.page}
           />
-          {/* <TileContainer
-            name={this.props.name}
-            apartments={this.props.apartments}
-            page={this.state.page}
-          />
-          <TileContainerR
+          {/* <TileContainerR
             name={this.props.name}
             apartments={this.props.apartmentsR}
             page={this.state.page}

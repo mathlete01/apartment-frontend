@@ -20,24 +20,28 @@ const Tile = ({apartment}) => {
     };
 
     const renderCarousel = () => {
-        // debugger
-        apartment.images.map(image => 
+        return apartment.images.map(image => 
         <Carousel.Item>
             <img
                 className="cardImage" 
                 src={image.url}
-                alt="oops!"
             />
         </Carousel.Item>)
     }
 
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex, e) => {
+      setIndex(selectedIndex);
+    };
+  
+
     return (
         <Card style={{ width: '30rem' }} className="shadow" onMouseEnter={e => showButton(e)} onMouseLeave={e => hideButton(e)}>
-            <Carousel>
+            <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
                 {renderCarousel()}
             </Carousel>
-            {/* <Card.Img className="cardImage" variant="top" src={apartment.images[0].url} /> */}
-            <Container className="d-flex justify-content-between border-bottom">
+            <Container className="d-flex justify-content-between border-bottom flex-grow-1 align-items-center">
                 <span>{apartment.bedrooms} bed {apartment.bathrooms} bath</span>
                 <BiRadioCircle/>
                 <span>{apartment.square_feet} sq. ft.</span>

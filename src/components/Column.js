@@ -23,7 +23,7 @@ class Column extends Component {
             className="arrow-box-left d-flex align-items-center justify-content-center"
             onClick={() => this.props.updatePriceLow(this.props.priceLow-100, this.props.priceHigh - 100)}
           >
-            <BsChevronDoubleLeft size="3em" />
+            <BsChevronDoubleLeft size="2em" />
           </div>
               <p>Price Point</p>
               <PriceFilter 
@@ -36,7 +36,7 @@ class Column extends Component {
             className="arrow-box-right d-flex align-items-center justify-content-center"
             onClick={() => this.props.updatePriceLow(this.props.priceLow+100, this.props.priceHigh + 100)}
           >
-            <BsChevronDoubleRight size="3em" />
+            <BsChevronDoubleRight size="2em" />
           </div>
           </Col>
         </Row>

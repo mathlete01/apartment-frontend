@@ -78,9 +78,15 @@ const Tile = ({apartment}) => {
         );
       }
 
+    const handleClick = (event) => {
+      console.log(event.target)
+      if (event.target.tagName === 'SPAN' || event.target.tagName === 'LI') return
+      setModalShow(true)
+    }
+
     return (
         <>
-        <Card style={{ width: '30rem', height: '14rem' }}  className="shadow" onMouseEnter={e => showButton(e)} onMouseLeave={e => hideButton(e)} onClick={() => setModalShow(true)}>
+        <Card style={{ width: '30rem', height: '14rem' }}  className="shadow" onMouseEnter={e => showButton(e)} onMouseLeave={e => hideButton(e)} onClick={ handleClick }>
             <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
                 {renderCarousel()}
             </Carousel>

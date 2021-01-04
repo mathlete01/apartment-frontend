@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TileContainer from "./TileContainer";
-import TileContainerR from "./TileContainerR";
 import Row from "react-bootstrap/Row";
+// import RowHeader from "./RowHeader";
 import Col from "react-bootstrap/Col";
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 
@@ -27,6 +27,7 @@ class Row_ extends Component {
   render() {
     return (
       <Row className="tile-row border-bottom">
+        {/* <RowHeader /> */}
         <Col
           className="border-right nav-color d-flex flex-column align-items-center justify-content-center"
           md={1}
@@ -43,20 +44,17 @@ class Row_ extends Component {
           >
             <BsChevronDoubleLeft size="3em" />
           </div>
-          {/* <TileContainer
-            name={this.props.name}
-            apartments={this.props.apartmentsL}
-            page={this.state.page}
-          /> */}
           <TileContainer
-            name={this.props.name}
-            apartments={this.props.apartments}
-            page={this.state.page}
+          neighborhood = {this.props.topLeft}
           />
-          {/* <TileContainerR
-            name={this.props.name}
-            apartments={this.props.apartmentsR}
-            page={this.state.page}
+          <TileContainer
+          neighborhood = {this.props.topCenter}
+          />
+          <TileContainer
+          neighborhood = {this.props.topRight}
+          />
+          {/* <TileContainer
+            apartments = {this.props.apartmentsR}
           /> */}
           <div
             className="arrow-box-right d-flex align-items-center justify-content-center"

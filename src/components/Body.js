@@ -20,7 +20,7 @@ class Body extends Component {
       .then((data) => {
         this.setState({
           neighborhoods: data,
-          selectedNeighborhoodIDs: [data[0].id, data[1].id, data[2].id],
+          selectedNeighborhoodIDs: [data[2].id, data[4].id, data[8].id],
         });
       })
       .catch((error) => {
@@ -41,7 +41,7 @@ class Body extends Component {
     return selectedNeighborhoods;
   };
 
-  filterNeighborhoodsByPriceL = () => {
+  filterNeighborhoodsByPriceLow = () => {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
@@ -53,7 +53,7 @@ class Body extends Component {
     return newArr;
   };
 
-  filterNeighborhoodsByPriceR = () => {
+  filterNeighborhoodsByPriceHigh = () => {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
@@ -108,8 +108,8 @@ class Body extends Component {
         />
         <RowContainer
           neighborhoods={this.filterNeighborhoodsByPrice()}
-          neighborhoodsL={this.filterNeighborhoodsByPriceL()}
-          neighborhoodsR={this.filterNeighborhoodsByPriceR()}
+          neighborhoodsLow={this.filterNeighborhoodsByPriceLow()}
+          neighborhoodsHigh={this.filterNeighborhoodsByPriceHigh()}
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
         />

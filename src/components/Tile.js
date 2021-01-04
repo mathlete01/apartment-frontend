@@ -7,7 +7,7 @@ import {BiRadioCircle} from "react-icons/bi"
 
 const Tile = ({apartment}) => {
 
-    console.log(apartment)
+    // console.log(apartment)
     return (
         <Card style={{ width: '30rem', height: '14rem' }} className="shadow">
             <Card.Img className="cardImage" variant="top" src={apartment.images[0].url} />

@@ -7,7 +7,7 @@ class PriceFilter extends React.Component {
         <span>$</span>
         <input
           type="text"
-          onChange={event => this.props.updatePriceLow(event.target.value)}
+          onChange={event => this.props.updatePriceLow(event.target.value, (parseInt(event.target.value) + 99))}
           placeholder={this.props.priceLow}
           />
         <span> - $</span>

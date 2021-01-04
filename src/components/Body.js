@@ -10,8 +10,8 @@ class Body extends Component {
   state = {
     neighborhoods: [],
     selectedNeighborhoodIDs: [],
-    priceLow: 3000,
-    priceHigh: 3099,
+    priceLow: 2300,
+    priceHigh: 2399,
   };
 
   componentDidMount() {
@@ -59,7 +59,7 @@ class Body extends Component {
       name: neighborhood.name,
       apartments: neighborhood.apartments.filter(
         (apt) =>
-          apt.price >= parseInt(this.state.priceLow) + 100 && apt.price <= parseInt(this.state.priceHigh) + 100
+          apt.price >= parseInt(this.state.priceLow) + 99 && apt.price <= parseInt(this.state.priceHigh) + 99
       ),
     }));
     return newArr;
@@ -81,18 +81,19 @@ class Body extends Component {
     this.setState({ selectedNeighborhoodIDs: neighborhoodArray });
   };
 
-  updatePriceLow = (low) => {
-    console.log(low);
+  updatePriceLow = (low, high) => {
+    console.log("updatePriceLow called")
     this.setState({
-      priceLow: low,
+      priceLow: parseInt(low),
+      priceHigh: parseInt(high),
     });
   };
-  updatePriceHigh = (high) => {
-    console.log(high);
-    this.setState({
-      priceHigh: high,
-    });
-  };
+  // updatePriceHigh = (high) => {
+  //   console.log("updatePriceHigh called")
+  //   this.setState({
+  //     priceHigh: parseInt(high),
+  //   });
+  // };
 
   render() {
     return (

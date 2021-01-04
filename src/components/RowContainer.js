@@ -38,20 +38,28 @@ class RowContainer extends Component {
   // };
 
   buildRowTop = (arrLow, arrCenter, arrHigh) => {
-  
     let row1col1 = arrLow[0]
     let row1col2 = arrCenter[0]
     let row1col3 = arrHigh[0]
-    console.log(row1col1)
-    console.log(row1col2)
-    console.log(row1col3)
-    // console.log(row1col3.apartments)
     return (
       <TileRow 
       name={"rowTop"} 
-      topLeft = {row1col1}
-      topCenter = {row1col2}
-      topRight = {row1col3} />
+      left = {row1col1}
+      center = {row1col2}
+      right = {row1col3} />
+    )
+  }
+
+  buildRowMiddle = (arrLow, arrCenter, arrHigh) => {
+    let row2col1 = arrLow[1]
+    let row2col2 = arrCenter[1]
+    let row2col3 = arrHigh[1]
+    return (
+      <TileRow 
+      name={"rowMiddle"} 
+      left = {row2col1}
+      center = {row2col2}
+      right = {row2col3} />
     )
   }
 
@@ -70,6 +78,7 @@ class RowContainer extends Component {
         {/* {this.rowC()} */}
         {/* {this.rowR()} */}
         {this.buildRowTop(this.props.neighborhoodsLow, this.props.neighborhoods, this.props.neighborhoodsHigh)}
+        {this.buildRowMiddle(this.props.neighborhoodsLow, this.props.neighborhoods, this.props.neighborhoodsHigh)}
         {/* <TileRow
         neighborhoods = {this.props.neighborhood}
         neighborhoodsHigh = {this.props.neighborhoodsHigh}

@@ -45,13 +45,13 @@ class Row_ extends Component {
             <BsChevronDoubleLeft size="3em" />
           </div>
           <TileContainer
-          neighborhood = {this.props.topLeft}
+          neighborhood = {this.props.left}
           />
           <TileContainer
-          neighborhood = {this.props.topCenter}
+          neighborhood = {this.props.center}
           />
           <TileContainer
-          neighborhood = {this.props.topRight}
+          neighborhood = {this.props.right}
           />
           {/* <TileContainer
             apartments = {this.props.apartmentsR}

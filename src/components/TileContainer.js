@@ -34,7 +34,7 @@ class TileContainer extends Component {
 
   buildTile = () => {
     let apt = this.props.neighborhood.apartments[this.state.counter];
-    return apt ? <Tile apartment={apt} className="tiles" /> : null;
+    return apt ? <Tile apartment={apt} className="tile" /> : null;
   };
 
   buildTileBlank = () => {
@@ -64,16 +64,13 @@ class TileContainer extends Component {
 
   render() {
     return (
-      <Container className="tile-container">
-        {/* <div className="tile-arrow-container d-flex justify-content-around"> */}
-        <div>
+      <Container className='d-flex justify-content-center align-items-stretch'>
           {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()}
-          {this.props.neighborhood
+          {/* {this.props.neighborhood
             ? this.props.neighborhood.apartments.length > 1
               ? this.showCount()
               : null
-            : null}
-        </div>
+            : null} */}
       </Container>
     );
   }

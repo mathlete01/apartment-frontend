@@ -32,28 +32,13 @@ class Row_ extends Component {
           className="border-right nav-color d-flex flex-column align-items-center justify-content-center"
           md={1}
         >
-          <p className="text-center">{this.props.name}</p>
-          {/* <div className="circle shadow">
-            <p className="font-weight-bold">{this.props.count}</p>
-          </div> */}
+          <p className="text-center">{this.props.name}</p>y
         </Col>
-        <div className="tile-arrow-container d-flex justify-content-around">
-          <div
-            className="arrow-box-left d-flex align-items-center justify-content-center"
-            onClick={this.changePageDown}
-          >
-            {/* <BsChevronDoubleLeft size="3em" /> */}
+          <div className="tile-container d-flex justify-content-around">
+            <TileContainer neighborhood={this.props.left} />
+            <TileContainer neighborhood={this.props.center} />
+            <TileContainer neighborhood={this.props.right} />
           </div>
-          <TileContainer neighborhood={this.props.left} />
-          <TileContainer neighborhood={this.props.center} />
-          <TileContainer neighborhood={this.props.right} />
-          <div
-            className="arrow-box-right d-flex align-items-center justify-content-center"
-            onClick={this.changePageUp}
-          >
-            {/* <BsChevronDoubleRight size="3em" /> */}
-          </div>
-        </div>
       </Row>
     );
   }

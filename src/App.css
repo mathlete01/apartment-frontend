@@ -17,6 +17,10 @@ body {
   flex-grow: 1;
 }
 
+#row-container > .tile-row {
+  height: 33.3%;
+}
+
 #body-container {
   flex-grow: 1;
   padding: 0px;
@@ -44,10 +48,32 @@ body {
   border-color: #e8e8e8;
 }
 
+.carousel-inner {
+  height: 100%;
+}
+
+.carousel-item.active {
+  height: 100%;
+}
+
+.modal-body > .carousel.slide {
+  height: 300px;
+}
+
+div.modal-dialog {
+  min-width: 0px;
+}
+
 .cardImage {
-  max-height: 150px;
+  position: absolute;
+  bottom: 0%;
+  /* max-height: 150px; */
   width: 100%;
   object-fit: cover;
+}
+
+div.shadow.card {
+  margin: 5px;
 }
 
 .circle {
@@ -65,14 +91,14 @@ body {
   font-size: 18px;
 }
 
-.tile-container {
+/* .tile-container {
   margin: 0 !important;
   display: grid;
   grid-template-columns: 33.3% 33.3% 33.3%;
   grid-template-rows: auto;
   grid-template-areas: 
     "tile-1 tile-2 tile-3";
-}
+} */
 
 .tile-container > .card {
   margin: 0 0.35rem;
@@ -130,9 +156,13 @@ h5 {
   cursor: pointer;
 }
 
-.tile-arrow-container {
+.tile-container {
   margin: 0;
   flex: 1;
+}
+
+.tile-container > .container {
+  width: 33.3%;
 }
 
 .imgContainer {

@@ -48,7 +48,7 @@ const Tile = ({apartment}) => {
         return (
           <Modal
             {...props}
-            size="lg"
+            // size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
           >
@@ -57,10 +57,10 @@ const Tile = ({apartment}) => {
                 {apartment.title}
               </Modal.Title>
             </Modal.Header>
+            <Modal.Body>
               <Carousel activeIndex={index} onSelect={handleSelect} interval={null} slide={true}>
                 {renderCarousel()}
                 </Carousel>
-            <Modal.Body>
               <h4>Description</h4>
               <ul>
                   <li>${apartment.price}/month</li> 
@@ -86,8 +86,8 @@ const Tile = ({apartment}) => {
 
     return (
         <>
-        <Card style={{ width: '30rem', height: '14rem' }}  className="shadow" onMouseEnter={e => showButton(e)} onMouseLeave={e => hideButton(e)} onClick={ handleClick }>
-            <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
+        <Card className="shadow" onMouseEnter={e => showButton(e)} onMouseLeave={e => hideButton(e)} onClick={ handleClick }>
+            <Carousel className='flex-grow-1' activeIndex={index} onSelect={handleSelect} interval={null}>
                 {renderCarousel()}
             </Carousel>
             <Container className="spec-container d-flex justify-content-between align-items-center border-bottom">

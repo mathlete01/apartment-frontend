@@ -33,9 +33,9 @@ class Row_ extends Component {
           md={1}
         >
           <p className="text-center">{this.props.name}</p>
-          <div className="circle shadow">
+          {/* <div className="circle shadow">
             <p className="font-weight-bold">{this.props.count}</p>
-          </div>
+          </div> */}
         </Col>
         <div className="tile-arrow-container d-flex justify-content-around">
           <div
@@ -44,15 +44,9 @@ class Row_ extends Component {
           >
             {/* <BsChevronDoubleLeft size="3em" /> */}
           </div>
-          <TileContainer
-          neighborhood = {this.props.left}
-          />
-          <TileContainer
-          neighborhood = {this.props.center}
-          />
-          <TileContainer
-          neighborhood = {this.props.right}
-          />
+          <TileContainer neighborhood={this.props.left} />
+          <TileContainer neighborhood={this.props.center} />
+          <TileContainer neighborhood={this.props.right} />
           <div
             className="arrow-box-right d-flex align-items-center justify-content-center"
             onClick={this.changePageUp}

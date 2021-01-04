@@ -16,7 +16,7 @@ class TileContainer extends Component {
   render() {
     return (
       <Container className="tile-container">
-        { this.buildTiles() }
+        {this.props.neighborhood ? this.buildTiles() : null}
         </Container>
     );
   }

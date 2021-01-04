@@ -46,7 +46,9 @@ class RowContainer extends Component {
       name={neighborhoodName} 
       left = {row3col1}
       center = {row3col2}
-      right = {row3col3} />
+      right = {row3col3} 
+      updatePriceLow = {this.props.updatePriceLow}
+      />
     )
   }
 
@@ -61,9 +63,9 @@ class RowContainer extends Component {
         className="mt-auto d-flex flex-column justify-content-between"
         fluid
       >
-        {this.buildRowTop(this.props.neighborhoodsLow, this.props.neighborhoods, this.props.neighborhoodsHigh)}
-        {this.buildRowMiddle(this.props.neighborhoodsLow, this.props.neighborhoods, this.props.neighborhoodsHigh)}
-        {this.buildRowBottom(this.props.neighborhoodsLow, this.props.neighborhoods, this.props.neighborhoodsHigh)}
+        {this.buildRowTop(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
+        {this.buildRowMiddle(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
+        {this.buildRowBottom(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
       </Container>
     );
   }

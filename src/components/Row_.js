@@ -42,7 +42,7 @@ class Row_ extends Component {
             className="arrow-box-left d-flex align-items-center justify-content-center"
             onClick={this.changePageDown}
           >
-            <BsChevronDoubleLeft size="3em" />
+            {/* <BsChevronDoubleLeft size="3em" /> */}
           </div>
           <TileContainer
           neighborhood = {this.props.left}
@@ -57,7 +57,7 @@ class Row_ extends Component {
             className="arrow-box-right d-flex align-items-center justify-content-center"
             onClick={this.changePageUp}
           >
-            <BsChevronDoubleRight size="3em" />
+            {/* <BsChevronDoubleRight size="3em" /> */}
           </div>
         </div>
       </Row>

@@ -105,10 +105,9 @@ class Body extends Component {
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
           updatePriceLow={this.updatePriceLow}
-          updatePriceHigh={this.updatePriceHigh}
         />
         <RowContainer
-          neighborhoods={this.filterNeighborhoodsByPrice()}
+          neighborhoodsCenter={this.filterNeighborhoodsByPrice()}
           neighborhoodsLow={this.filterNeighborhoodsByPriceLow()}
           neighborhoodsHigh={this.filterNeighborhoodsByPriceHigh()}
           priceLow={this.state.priceLow}

@@ -33,7 +33,6 @@ class TileContainer extends Component {
   };
 
   buildTile = () => {
-    
     let apt = this.props.neighborhood.apartments[this.state.counter];
     return apt ? <Tile apartment={apt} className="tiles" /> : null;
   };
@@ -46,21 +45,17 @@ class TileContainer extends Component {
   showCount = () => {
     return (
       <div>
-        <div
-          className="arrow-box-left d-flex align-items-center justify-content-center"
-          onClick={this.prevApt}
-        >
-          <BsChevronLeft size="2em" />
+        <div className="imgContainer">
+          <div className="other" onClick={this.prevApt}>
+            <BsChevronLeft size="2em" />
+          </div>
+          <div className="circle shadow">
+            <p className="font-weight-bold">
+              {this.props.neighborhood.apartments.length}
+            </p>
+          </div>
         </div>
-        <div className="circle shadow">
-          <p className="font-weight-bold">
-            {this.props.neighborhood.apartments.length}
-          </p>
-        </div>
-        <div
-          className="arrow-box-right d-flex align-items-center justify-content-center"
-          onClick={this.nextApt}
-        >
+        <div className="other" onClick={this.nextApt}>
           <BsChevronRight size="2em" />
         </div>
       </div>
@@ -73,7 +68,11 @@ class TileContainer extends Component {
         {/* <div className="tile-arrow-container d-flex justify-content-around"> */}
         <div>
           {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()}
-          {this.props.neighborhood ? this.props.neighborhood.apartments.length > 1 ? this.showCount() : null : null}
+          {this.props.neighborhood
+            ? this.props.neighborhood.apartments.length > 1
+              ? this.showCount()
+              : null
+            : null}
         </div>
       </Container>
     );

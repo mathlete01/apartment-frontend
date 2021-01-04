@@ -117,3 +117,19 @@ body {
   margin: 0;
   flex: 1;
 }
+
+/* .img {
+  width: 100%;
+  height: 20px;
+  max-width: 300px;
+} */
+
+.imgContainer {
+float: left;
+width: 50%;
+}
+
+.other {
+float: left;
+width: 50%;
+}

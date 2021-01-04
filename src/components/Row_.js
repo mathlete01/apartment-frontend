@@ -53,9 +53,6 @@ class Row_ extends Component {
           <TileContainer
           neighborhood = {this.props.right}
           />
-          {/* <TileContainer
-            apartments = {this.props.apartmentsR}
-          /> */}
           <div
             className="arrow-box-right d-flex align-items-center justify-content-center"
             onClick={this.changePageUp}

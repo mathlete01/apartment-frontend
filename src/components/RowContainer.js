@@ -4,46 +4,16 @@ import Container from "react-bootstrap/Container";
 // import { Container } from 'reactstrap';
 
 class RowContainer extends Component {
-  // rowL = this.props.neighborhoodsL.map((element) => (
-  //   <TileRow
-  //     name={element.name}
-  //     count={element.apartments.length}
-  //     apartments={this.sortApartments(element.apartments)}
-  //     key={element.id}
-  //   />
-  // ));
-
-  // rowC = () => {
-  //   return this.props.neighborhoods.map((element) => (
-  //     <TileRow
-  //       name={element.name}
-  //       count={element.apartments.length}
-  //       apartments={this.sortApartments(element.apartments)}
-  //       apartments={element.apartments}
-  //       key={element.id}
-  //     />
-  //   ));
-  // };
-
-  // rowR = () => {
-  //   return this.props.neighborhoodsR.map((element) => (
-  //     <TileRow
-  //       name={element.name}
-  //       count={element.apartments.length}
-  //       // apartments={this.sortApartments(element.apartments)}
-  //       apartments={element.apartments}
-  //       key={element.id}
-  //     />
-  //   ));
-  // };
 
   buildRowTop = (arrLow, arrCenter, arrHigh) => {
+    let neighborhoodName = ""
+    this.props.neighborhoodsLow[0] ? neighborhoodName = this.props.neighborhoodsLow[0].name : neighborhoodName = null
     let row1col1 = arrLow[0]
     let row1col2 = arrCenter[0]
     let row1col3 = arrHigh[0]
     return (
       <TileRow 
-      name={"rowTop"} 
+      name={neighborhoodName} 
       left = {row1col1}
       center = {row1col2}
       right = {row1col3} />
@@ -51,15 +21,32 @@ class RowContainer extends Component {
   }
 
   buildRowMiddle = (arrLow, arrCenter, arrHigh) => {
+    let neighborhoodName = ""
+    this.props.neighborhoodsLow[1] ? neighborhoodName = this.props.neighborhoodsLow[1].name : neighborhoodName = null
     let row2col1 = arrLow[1]
     let row2col2 = arrCenter[1]
     let row2col3 = arrHigh[1]
     return (
       <TileRow 
-      name={"rowMiddle"} 
+      name={neighborhoodName} 
       left = {row2col1}
       center = {row2col2}
       right = {row2col3} />
+    )
+  }
+
+  buildRowBottom = (arrLow, arrCenter, arrHigh) => {
+    let neighborhoodName = ""
+    this.props.neighborhoodsLow[2] ? neighborhoodName = this.props.neighborhoodsLow[2].name : neighborhoodName = null
+    let row3col1 = arrLow[2]
+    let row3col2 = arrCenter[2]
+    let row3col3 = arrHigh[2]
+    return (
+      <TileRow 
+      name={neighborhoodName} 
+      left = {row3col1}
+      center = {row3col2}
+      right = {row3col3} />
     )
   }
 
@@ -74,16 +61,9 @@ class RowContainer extends Component {
         className="mt-auto d-flex flex-column justify-content-between"
         fluid
       >
-        {/* {this.buildRows()} */}
-        {/* {this.rowC()} */}
-        {/* {this.rowR()} */}
         {this.buildRowTop(this.props.neighborhoodsLow, this.props.neighborhoods, this.props.neighborhoodsHigh)}
         {this.buildRowMiddle(this.props.neighborhoodsLow, this.props.neighborhoods, this.props.neighborhoodsHigh)}
-        {/* <TileRow
-        neighborhoods = {this.props.neighborhood}
-        neighborhoodsHigh = {this.props.neighborhoodsHigh}
-        apartments = {this.props.neighborhood.apartments}
-        apartmentsR = {this.props.neighborhoodR.apartments} /> */}
+        {this.buildRowBottom(this.props.neighborhoodsLow, this.props.neighborhoods, this.props.neighborhoodsHigh)}
       </Container>
     );
   }

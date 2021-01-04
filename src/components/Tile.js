@@ -80,21 +80,21 @@ const Tile = ({apartment}) => {
 
     return (
         <>
-        <Card style={{ width: '30rem' }} className="shadow" onMouseEnter={e => showButton(e)} onMouseLeave={e => hideButton(e)} onClick={() => setModalShow(true)}>
+        <Card style={{ width: '30rem', height: '14rem' }}  className="shadow" onMouseEnter={e => showButton(e)} onMouseLeave={e => hideButton(e)} onClick={() => setModalShow(true)}>
             <Carousel activeIndex={index} onSelect={handleSelect} interval={null}>
                 {renderCarousel()}
             </Carousel>
-            <Container className="d-flex justify-content-between border-bottom flex-grow-1 align-items-center">
+            <Container className="spec-container d-flex justify-content-between align-items-center border-bottom">
                 <span>{apartment.bedrooms} bed {apartment.bathrooms} bath</span>
                 <BiRadioCircle/>
                 <span>{apartment.square_feet} sq. ft.</span>
                 <BiRadioCircle/>
                 <span>${apartment.price}</span>
             </Container>
-            <div className="d-flex justify-content-between flex-grow-1 align-items-center">    
-                <FaRegThumbsUp color="green" size="35px" className={display}/>
-                <h5>{apartment.title} </h5>
-                <FaRegThumbsDown color="red" size="35px" className={display}/>
+            <div className="d-flex justify-content-between align-items-center">    
+                <FaRegThumbsUp color="green" size="35px"/>
+                <h6 className='card-title' style={{width: '20rem'}}>{apartment.title}</h6>
+                <FaRegThumbsDown color="red" size="35px"/>
             </div>
         </Card>
         <CenteredModal

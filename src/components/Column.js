@@ -1,45 +1,65 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
-// import { Container, Row, Col } from "reactstrap";
-// import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Form from 'react-bootstrap/Form'
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import PriceFilter from "./PriceFilter";
+import NeighborhoodDropdown from "./NeighborhoodDropdown";
+import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 
 class Column extends Component {
   render() {
     return (
-      <Container className="nav-color border-bottom" bg='light' fluid>
+      <Container className="nav-color border-bottom" bg="light" fluid>
         <Row>
-          <Col md={1} className='border-bottom border-right text-center'>
-            <div>Filters: /|\ </div>
+          <Col md={1} className="border-bottom border-right text-center">
+            <NeighborhoodDropdown
+              handleNeighborhoodChange={this.props.handleNeighborhoodChange}
+              neighborhoods={this.props.neighborhoods}
+              selectedIDs={this.props.selectedIDs}
+            />
           </Col>
-          <Col className='border-bottom text-center'>
-            <div>Range: $MIN - $MAX</div>
+          <Col>
+            <div
+              className="arrow-box-left d-flex align-items-center justify-content-center"
+              onClick={() =>
+                this.props.updatePriceLow(
+                  this.props.priceLow - 100,
+                  this.props.priceHigh - 100
+                )
+              }
+            >
+              <BsChevronDoubleLeft size="2em" />
+              ${this.props.priceLow - 100} – ${this.props.priceHigh - 100}
+            </div>
+          </Col>
+
+          <Col className="filter-bar border-bottom d-flex flex-row justify-content-center">
+            <div>
+              {/* <p>Price Point</p> */}
+              ${this.props.priceLow} – ${this.props.priceHigh}
+              {/* <PriceFilter
+                priceLow={this.props.priceLow}
+                priceHigh={parseInt(this.props.priceLow) + 99}
+                updatePriceLow={this.props.updatePriceLow}
+                updatePriceHigh={this.props.updatePriceHigh}
+              /> */}
+            </div>
+          </Col>
+          <Col>
+            <div
+              className="arrow-box-right d-flex align-items-center justify-content-center"
+              onClick={() =>
+                this.props.updatePriceLow(
+                  this.props.priceLow + 100,
+                  this.props.priceHigh + 100
+                )
+              }
+            >
+              ${this.props.priceLow + 100} – ${this.props.priceHigh + 100}
+              <BsChevronDoubleRight size="2em" />
+            </div>
           </Col>
         </Row>
-        {/* <Form>
-          <Row form>
-            <Col lg={2}>
-              <Form.Group>
-                <Form.Label >Price (Low)</Form.Label>
-                <Form.Control
-                  id="priceLow"
-                  placeholder="$2,000/mo"
-                />
-              </Form.Group>
-            </Col>
-            <Col lg={2}>
-              <Form.Group>
-                <Form.Label >Price (High)</Form.Label>
-                <Form.Control
-                  id="priceHigh"
-                  placeholder="$3,000/mo"
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-        </Form> */}
       </Container>
     );
   }

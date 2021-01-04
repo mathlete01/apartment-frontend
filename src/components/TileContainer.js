@@ -1,21 +1,80 @@
 import React, { Component } from "react";
 import Tile from "./Tile";
+import TileBlank from "./TileBlank";
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import ListGroup from 'react-bootstrap/ListGroup'
+import {
+  BsChevronLeft,
+  BsChevronRight,
+  BsChevronDoubleLeft,
+  BsChevronDoubleRight,
+} from "react-icons/bs";
 
 class TileContainer extends Component {
-  buildTiles = () => {
-    return this.props.apartments.slice(0,3).map((apartment) => (
-        <Tile apartment={apartment} className="tiles" />
-    ));
+  state = {
+    counter: 0,
+  };
+
+  nextApt = () => {
+    console.log("nextApt");
+    console.log(this.state.counter);
+    if (this.state.counter >= this.props.neighborhood.apartments.length - 1)
+      return;
+    this.setState((prevState) => {
+      return { counter: prevState.counter + 1 };
+    });
+  };
+
+  prevApt = () => {
+    console.log("prevApt");
+    if (this.state.counter <= 0) return;
+    this.setState((prevState) => {
+      return { counter: prevState.counter - 1 };
+    });
+  };
+
+  buildTile = () => {
+    let apt = this.props.neighborhood.apartments[this.state.counter];
+    return apt ? <Tile apartment={apt} className="tiles" /> : null;
+  };
+
+  buildTileBlank = () => {
+    console.log("BLANK");
+    return <TileBlank className="tiles" />;
+  };
+
+  showCount = () => {
+    return (
+      <div>
+        <div className="imgContainer">
+          <div className="other" onClick={this.prevApt}>
+            <BsChevronLeft size="2em" />
+          </div>
+          <div className="circle shadow">
+            <p className="font-weight-bold">
+              {this.props.neighborhood.apartments.length}
+            </p>
+          </div>
+        </div>
+        <div className="other" onClick={this.nextApt}>
+          <BsChevronRight size="2em" />
+        </div>
+      </div>
+    );
   };
 
   render() {
     return (
-      <Col className='tile-container d-flex justify-content-start border-bottom'>
-        { this.buildTiles() }
-      </Col>
+      <Container className="tile-container">
+        {/* <div className="tile-arrow-container d-flex justify-content-around"> */}
+        <div>
+          {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()}
+          {this.props.neighborhood
+            ? this.props.neighborhood.apartments.length > 1
+              ? this.showCount()
+              : null
+            : null}
+        </div>
+      </Container>
     );
   }
 }

@@ -18,11 +18,11 @@ class Column extends Component {
               selectedIDs={this.props.selectedIDs}
             />
           </Col>
-          <Col>
-            <div
+          <Col id="outer" className="pinstripeLight-color">
+            <div 
               className="arrow-box-left d-flex align-items-center justify-content-center"
               onClick={() =>
-                this.props.updatePriceLow(
+                this.props.updatePrice(
                   this.props.priceLow - 100,
                   this.props.priceHigh - 100
                 )
@@ -33,23 +33,16 @@ class Column extends Component {
             </div>
           </Col>
 
-          <Col className="filter-bar border-bottom d-flex flex-row justify-content-center">
+          <Col className="filter-bar border-bottom d-flex flex-row justify-content-center pinstripeLight-color"  id="center" >
             <div>
-              {/* <p>Price Point</p> */}
               ${this.props.priceLow} – ${this.props.priceHigh}
-              {/* <PriceFilter
-                priceLow={this.props.priceLow}
-                priceHigh={parseInt(this.props.priceLow) + 99}
-                updatePriceLow={this.props.updatePriceLow}
-                updatePriceHigh={this.props.updatePriceHigh}
-              /> */}
             </div>
           </Col>
-          <Col>
+          <Col id="outer" className="pinstripeLight-color">
             <div
-              className="arrow-box-right d-flex align-items-center justify-content-center"
+              className="arrow-box-right d-flex align-items-center justify-content-center "
               onClick={() =>
-                this.props.updatePriceLow(
+                this.props.updatePrice(
                   this.props.priceLow + 100,
                   this.props.priceHigh + 100
                 )

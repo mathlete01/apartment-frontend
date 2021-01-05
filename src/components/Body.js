@@ -4,7 +4,6 @@ import Column from "./Column";
 import Container from "react-bootstrap/Container";
 
 const API = "http://localhost:3000/neighborhoods";
-// const alphabetizeStart = "m";
 
 class Body extends Component {
   state = {
@@ -19,8 +18,8 @@ class Body extends Component {
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          neighborhoods: data,
-          selectedNeighborhoodIDs: this.allIDsFromJsonObject(data)
+          neighborhoods: this.sortNeighborhoods(data),
+          selectedNeighborhoodIDs: this.allIDsFromJsonObject(data),
         });
       })
       .catch((error) => {
@@ -28,21 +27,20 @@ class Body extends Component {
       });
   }
 
+  sortNeighborhoods = (jsonObj) => {
+    return jsonObj.sort((a, b) =>
+      a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+    )
+  };
+
   allIDsFromJsonObject = (jsonObj) => {
-    return jsonObj.map( neighborhood => neighborhood.id )
-  }
+    return jsonObj.map((neighborhood) => neighborhood.id);
+  };
 
   allNeighborhoodIDsAndNames = () => {
     return this.state.neighborhoods.map((neighborhood) => {
       return { id: neighborhood.id, name: neighborhood.name };
     });
-  };
-
-  selectNeighborhoods = () => {
-    let selectedNeighborhoods = this.state.selectedNeighborhoodIDs.map((id) =>
-      this.state.neighborhoods.find((neighborhood) => neighborhood.id === id)
-    );
-    return selectedNeighborhoods;
   };
 
   filterNeighborhoodsByPriceLow = () => {
@@ -51,7 +49,8 @@ class Body extends Component {
       name: neighborhood.name,
       apartments: neighborhood.apartments.filter(
         (apt) =>
-          apt.price >= parseInt(this.state.priceLow) - 100 && apt.price <= parseInt(this.state.priceHigh) -100
+          apt.price >= parseInt(this.state.priceLow) - 100 &&
+          apt.price <= parseInt(this.state.priceHigh) - 100
       ),
     }));
     return newArr;
@@ -63,13 +62,14 @@ class Body extends Component {
       name: neighborhood.name,
       apartments: neighborhood.apartments.filter(
         (apt) =>
-          apt.price >= parseInt(this.state.priceLow) + 99 && apt.price <= parseInt(this.state.priceHigh) + 99
+          apt.price >= parseInt(this.state.priceLow) + 99 &&
+          apt.price <= parseInt(this.state.priceHigh) + 99
       ),
     }));
     return newArr;
   };
-  
-  filterNeighborhoodsByPrice = () => {
+
+  filterNeighborhoodsByPriceCenter = () => {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
@@ -81,12 +81,18 @@ class Body extends Component {
     return newArr;
   };
 
+  selectNeighborhoods = () => {
+    let selectedNeighborhoods = this.state.selectedNeighborhoodIDs.map((id) =>
+      this.state.neighborhoods.find((neighborhood) => neighborhood.id === id)
+    );
+    return selectedNeighborhoods;
+  };
+
   updateSelectedNeighborhoods = (neighborhoodArray) => {
     this.setState({ selectedNeighborhoodIDs: neighborhoodArray });
   };
 
-  updatePriceLow = (low, high) => {
-    console.log("updatePriceLow called")
+  updatePrice = (low, high) => {
     this.setState({
       priceLow: parseInt(low),
       priceHigh: parseInt(high),
@@ -102,10 +108,10 @@ class Body extends Component {
           selectedIDs={this.state.selectedNeighborhoodIDs}
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
-          updatePriceLow={this.updatePriceLow}
+          updatePrice={this.updatePrice}
         />
         <RowContainer
-          neighborhoodsCenter={this.filterNeighborhoodsByPrice()}
+          neighborhoodsCenter={this.filterNeighborhoodsByPriceCenter()}
           neighborhoodsLow={this.filterNeighborhoodsByPriceLow()}
           neighborhoodsHigh={this.filterNeighborhoodsByPriceHigh()}
           priceLow={this.state.priceLow}

@@ -4,13 +4,17 @@ import Container from "react-bootstrap/Container";
 import { BsChevronDoubleUp, BsChevronDoubleDown } from "react-icons/bs";
 
 class RowContainer extends Component {
+  state = {
+    nStartIndex: 0,
+  };
 
   buildRowTop = (arrLow, arrCenter, arrHigh) => {
     let neighborhoodName = ""
-    this.props.neighborhoodsLow[0] ? neighborhoodName = this.props.neighborhoodsLow[0].name : neighborhoodName = null
-    let row1col1 = arrLow[0]
-    let row1col2 = arrCenter[0]
-    let row1col3 = arrHigh[0]
+    let index = this.state.nStartIndex
+    this.props.neighborhoodsLow[index] ? neighborhoodName = this.props.neighborhoodsLow[index].name : neighborhoodName = null
+    let row1col1 = arrLow[index]
+    let row1col2 = arrCenter[index]
+    let row1col3 = arrHigh[index]
     return (
       <TileRow 
       name={neighborhoodName} 
@@ -22,10 +26,11 @@ class RowContainer extends Component {
 
   buildRowMiddle = (arrLow, arrCenter, arrHigh) => {
     let neighborhoodName = ""
-    this.props.neighborhoodsLow[1] ? neighborhoodName = this.props.neighborhoodsLow[1].name : neighborhoodName = null
-    let row2col1 = arrLow[1]
-    let row2col2 = arrCenter[1]
-    let row2col3 = arrHigh[1]
+    let index = this.state.nStartIndex + 1
+    this.props.neighborhoodsLow[index] ? neighborhoodName = this.props.neighborhoodsLow[index].name : neighborhoodName = null
+    let row2col1 = arrLow[index]
+    let row2col2 = arrCenter[index]
+    let row2col3 = arrHigh[index]
     return (
       <TileRow 
       name={neighborhoodName} 
@@ -37,19 +42,34 @@ class RowContainer extends Component {
 
   buildRowBottom = (arrLow, arrCenter, arrHigh) => {
     let neighborhoodName = ""
-    this.props.neighborhoodsLow[2] ? neighborhoodName = this.props.neighborhoodsLow[2].name : neighborhoodName = null
-    let row3col1 = arrLow[2]
-    let row3col2 = arrCenter[2]
-    let row3col3 = arrHigh[2]
+    let index = this.state.nStartIndex + 2
+    this.props.neighborhoodsLow[index] ? neighborhoodName = this.props.neighborhoodsLow[index].name : neighborhoodName = null
+    let row3col1 = arrLow[index]
+    let row3col2 = arrCenter[index]
+    let row3col3 = arrHigh[index]
     return (
       <TileRow 
       name={neighborhoodName} 
       left = {row3col1}
       center = {row3col2}
       right = {row3col3} 
-      updatePriceLow = {this.props.updatePriceLow}
+      updatePrice = {this.props.updatePrice}
       />
     )
+  }
+
+  neighborhoodDown = () => {
+    if (this.state.nStartIndex >= this.props.neighborhoodsLow.length - 3) return
+    this.setState((prevState) => {
+      return { nStartIndex: prevState.nStartIndex + 1 } 
+    })
+  }
+
+  neighborhoodUp = () => {
+    if (this.state.nStartIndex < 1) return
+    this.setState((prevState) => {
+      return { nStartIndex: prevState.nStartIndex - 1 } 
+    })
   }
 
   render() {
@@ -62,8 +82,8 @@ class RowContainer extends Component {
         {this.buildRowTop(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
         {this.buildRowMiddle(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
         {this.buildRowBottom(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
-        <div className='d-flex justify-content-center apt-arrow-up col-md-1'><BsChevronDoubleUp /></div>
-        <div className='d-flex justify-content-center apt-arrow-down col-md-1'><BsChevronDoubleDown /></div>
+        <div className='d-flex justify-content-center apt-arrow-up col-md-1'><BsChevronDoubleUp onClick = {() => this.neighborhoodUp()} /></div>
+        <div className='d-flex justify-content-center apt-arrow-down col-md-1'><BsChevronDoubleDown onClick={() => this.neighborhoodDown()} /></div>
       </Container>
     );
   }

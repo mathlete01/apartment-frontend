@@ -209,4 +209,6 @@ label {
 #neighborhoods-dropdown-form {
   max-height: 300px;
   overflow: auto;
+  background:#FFF !important;
+  color:#000 !important;
 }

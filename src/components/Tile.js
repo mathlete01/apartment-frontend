@@ -1,10 +1,10 @@
-// import React from 'react';
 import React, { useState } from "react"
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import {FaRegThumbsUp} from "react-icons/fa"
 import {FaRegThumbsDown} from "react-icons/fa"
 import {FaThumbsUp} from "react-icons/fa"
+import {FaThumbsDown} from "react-icons/fa"
 import {BiRadioCircle} from "react-icons/bi"
 import Carousel from 'react-bootstrap/Carousel'
 import Modal from 'react-bootstrap/Modal'
@@ -24,17 +24,15 @@ const Tile = ({apartment}) => {
         setDisplay("notdisplayed");
     };
 
-    const [like, setLiked] = useState("notliked")
+    const [like, setLiked] = useState(false)
     const handleLike = e => {
-        console.log(e.target)
-        e.preventDefault();
-        setLiked("liked")
+        setLiked(!like)
     }
 
+    const [dislike, setDisliked] = useState(false)
     const handleDislike = e => {
-      console.log(e.target)
-      // e.target.parentNode.parentNode.remove()
-      //hide from DOM
+      setDisliked(!dislike)
+      //remove this apartment from the tile stack 
     }
 
     //controlled carousel 
@@ -45,6 +43,7 @@ const Tile = ({apartment}) => {
                 className="cardImage" 
                 src={image.url}
                 alt="uh oh!"
+                key={image.url}
             />
         </Carousel.Item>)
     }
@@ -56,7 +55,7 @@ const Tile = ({apartment}) => {
     };
   
     //handling modal 
-    const [modalShow, setModalShow] = React.useState(false)
+    const [modalShow, setModalShow] = useState(false)
 
     function CenteredModal(props) {
         return (
@@ -77,8 +76,8 @@ const Tile = ({apartment}) => {
                 {renderCarousel()}
                 </Carousel>
               <div className="d-flex justify-content-around" style={{height: '60px'}}> 
-                <FaRegThumbsUp color="green" size="30px" onClick={handleLike} className="align-self-center"/>
-                <FaRegThumbsDown color="red" size="30px" onClick={handleDislike} className="align-self-center"/>
+                {dislike === true ? <FaThumbsDown color="red" size="35px" onClick={handleDislike} className="align-self-center"/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislike} className="align-self-center"/> }
+                {like === true ? <FaThumbsUp color="green" size="35px" onClick={handleLike} className="align-self-center"/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLike} className="align-self-center"/>}
               </div>
               <h4>Description</h4>
               <ul>
@@ -97,8 +96,8 @@ const Tile = ({apartment}) => {
         );
       }
 
-    const handleClick = (event) => {
-      if (event.target.tagName === 'SPAN' || event.target.tagName === 'LI' || event.target.tagName === 'svg') return
+    const handleClick = (e) => {
+      if (e.target.tagName === 'SPAN' || e.target.tagName === 'LI' || e.target.tagName === 'svg' || e.target.tagName === 'path') return
       setModalShow(true)
     }
 
@@ -116,10 +115,9 @@ const Tile = ({apartment}) => {
                 <span>${apartment.price}</span>
             </Container>
             <div className="d-flex justify-content-between align-items-center">
-                {setLiked === "liked" ? <FaThumbsUp color="green" size="35px"/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLike}/>}    
-                {/* <FaRegThumbsUp color="green" size="35px" onClick={handleLike}/> */}
+                {dislike === true ? <FaThumbsDown color="red" size="35px" onClick={handleDislike}/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislike}/> }
                 <h6 className='card-title' style={{width: '20rem'}}>{apartment.title}</h6>
-                <FaRegThumbsDown color="red" size="35px" onClick={handleDislike}/>
+                {like === true ? <FaThumbsUp color="green" size="35px" onClick={handleLike}/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLike}/>}    
             </div>
         </Card>
         <CenteredModal

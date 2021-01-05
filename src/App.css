@@ -203,3 +203,11 @@ label {
   width: 10%;
   height: 100%;
 }
+
+.price-arrow {
+  margin: auto 2px;
+}
+
+.price-arrow:hover {
+  cursor: pointer;
+}

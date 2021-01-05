@@ -44,7 +44,7 @@ class TileContainer extends Component {
 
   showArrowLeft = () => {
     return (
-      <div className="vertical-center" onClick={this.prevApt}>
+      <div className="tile-left-arrow d-flex justify-content-center align-items-center" onClick={this.prevApt}>
         <BsChevronLeft size="2em" />
       </div>
     );
@@ -52,7 +52,7 @@ class TileContainer extends Component {
 
   showArrowRight = () => {
     return (
-      <div className="vertical-center" onClick={this.nextApt}>
+      <div className="tile-right-arrow d-flex justify-content-center align-items-center" onClick={this.nextApt}>
         <BsChevronRight size="2em" />
       </div>
     );
@@ -60,7 +60,7 @@ class TileContainer extends Component {
 
   render() {
     return (
-      <Container className="d-flex justify-content-center align-items-stretch">
+      <Container className="tile d-flex justify-content-center align-items-stretch">
         {this.props.neighborhood
           ? this.props.neighborhood.apartments.length > 1
             ? this.showArrowLeft()

@@ -193,6 +193,10 @@ label {
   height: 100%;
 }
 
+.tile-left-arrow:hover, .tile-right-arrow:hover {
+  cursor: pointer;
+}
+
 .tile-right-arrow {
   position: absolute;
   right: 0%;

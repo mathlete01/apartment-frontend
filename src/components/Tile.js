@@ -23,6 +23,17 @@ const Tile = ({apartment}) => {
         setDisplay("notdisplayed");
     };
 
+    const handleLike = e => {
+      console.log(e.target)
+      //
+    }
+
+    const handleDislike = e => {
+      console.log(e.target)
+      // e.target.parentNode.parentNode.remove()
+      //hide from DOM
+    }
+
     //controlled carousel 
     const renderCarousel = () => {
         return apartment.images.map(image => 
@@ -48,9 +59,10 @@ const Tile = ({apartment}) => {
         return (
           <Modal
             {...props}
-            // size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            animation={false}
+            scrollable={true}
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
@@ -61,6 +73,10 @@ const Tile = ({apartment}) => {
               <Carousel activeIndex={index} onSelect={handleSelect} interval={null} slide={true}>
                 {renderCarousel()}
                 </Carousel>
+              <div className="d-flex justify-content-around" style={{height: '60px'}}> 
+                <FaRegThumbsUp color="green" size="30px" onClick={handleLike} className="align-self-center"/>
+                <FaRegThumbsDown color="red" size="30px" onClick={handleDislike} className="align-self-center"/>
+              </div>
               <h4>Description</h4>
               <ul>
                   <li>${apartment.price}/month</li> 
@@ -79,8 +95,7 @@ const Tile = ({apartment}) => {
       }
 
     const handleClick = (event) => {
-      console.log(event.target)
-      if (event.target.tagName === 'SPAN' || event.target.tagName === 'LI') return
+      if (event.target.tagName === 'SPAN' || event.target.tagName === 'LI' || event.target.tagName === 'svg') return
       setModalShow(true)
     }
 
@@ -98,9 +113,9 @@ const Tile = ({apartment}) => {
                 <span>${apartment.price}</span>
             </Container>
             <div className="d-flex justify-content-between align-items-center">    
-                <FaRegThumbsUp color="green" size="35px"/>
+                <FaRegThumbsUp color="green" size="35px" onClick={handleLike}/>
                 <h6 className='card-title' style={{width: '20rem'}}>{apartment.title}</h6>
-                <FaRegThumbsDown color="red" size="35px"/>
+                <FaRegThumbsDown color="red" size="35px" onClick={handleDislike}/>
             </div>
         </Card>
         <CenteredModal

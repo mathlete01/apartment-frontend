@@ -22,7 +22,10 @@ const NeighborhoodDropdown = ({ neighborhoods, selectedIDs, handleNeighborhoodCh
 
     const generateNeighborhoodCheckboxes = (neighborhoods) => {
         // {id: 101, name: "pacific heights"}
-        return neighborhoods.map( neighborhood => (
+        if (neighborhoods.length === 0) return
+        const sortedNeighborhoods = neighborhoods.sort( (a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1: -1 )
+        // debugger
+        return sortedNeighborhoods.map( neighborhood => (
             <>
                 <input key={ neighborhood.id } type='checkbox' name={ neighborhood.name } value={ neighborhood.id } checked={ selectedHash[neighborhood.id] } />
                 <label for={ neighborhood.name }>{ neighborhood.name }</label><br/>

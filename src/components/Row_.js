@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import TileContainer from "./TileContainer";
 import Row from "react-bootstrap/Row";
-// import RowHeader from "./RowHeader";
 import Col from "react-bootstrap/Col";
-import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 
 class Row_ extends Component {
   state = {

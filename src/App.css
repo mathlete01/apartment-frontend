@@ -192,3 +192,12 @@ width: 50%;
   width: 40%;
   height: auto;
 }
+
+label {
+  margin: 0 2px;
+}
+
+#neighborhoods-dropdown-form {
+  max-height: 300px;
+  overflow: auto;
+}

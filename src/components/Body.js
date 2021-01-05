@@ -88,12 +88,6 @@ class Body extends Component {
       priceHigh: parseInt(high),
     });
   };
-  // updatePriceHigh = (high) => {
-  //   console.log("updatePriceHigh called")
-  //   this.setState({
-  //     priceHigh: parseInt(high),
-  //   });
-  // };
 
   render() {
     return (

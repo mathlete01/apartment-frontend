@@ -10,8 +10,8 @@ class Body extends Component {
   state = {
     neighborhoods: [],
     selectedNeighborhoodIDs: [],
-    priceLow: 2300,
-    priceHigh: 2399,
+    priceLow: 2000,
+    priceHigh: 2099,
   };
 
   componentDidMount() {

@@ -42,35 +42,36 @@ class TileContainer extends Component {
     return <TileBlank className="tiles" />;
   };
 
-  showCount = () => {
+  showArrowLeft = () => {
     return (
-      <div>
-        <div className="imgContainer">
-          <div className="other" onClick={this.prevApt}>
-            <BsChevronLeft size="2em" />
-          </div>
-          <div className="circle shadow">
-            <p className="font-weight-bold">
-              {this.props.neighborhood.apartments.length}
-            </p>
-          </div>
-        </div>
-        <div className="other" onClick={this.nextApt}>
-          <BsChevronRight size="2em" />
-        </div>
+      <div className="vertical-center" onClick={this.prevApt}>
+        <BsChevronLeft size="2em" />
+      </div>
+    );
+  };
+
+  showArrowRight = () => {
+    return (
+      <div className="vertical-center" onClick={this.nextApt}>
+        <BsChevronRight size="2em" />
       </div>
     );
   };
 
   render() {
     return (
-      <Container className='d-flex justify-content-center align-items-stretch'>
-          {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()}
-          {/* {this.props.neighborhood
-            ? this.props.neighborhood.apartments.length > 1
-              ? this.showCount()
-              : null
-            : null} */}
+      <Container className="d-flex justify-content-center align-items-stretch">
+        {this.props.neighborhood
+          ? this.props.neighborhood.apartments.length > 1
+            ? this.showArrowLeft()
+            : null
+          : null}
+        {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()}
+        {this.props.neighborhood
+          ? this.props.neighborhood.apartments.length > 1
+            ? this.showArrowRight()
+            : null
+          : null}
       </Container>
     );
   }

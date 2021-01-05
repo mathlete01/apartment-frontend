@@ -32,7 +32,15 @@ body {
 }
 
 .nav-color {
+  background-color: #FFFFFF;
+}
+
+.pinstripeLight-color {
   background-color: #f8f9fa;
+}
+
+.pinstripeDark-color {
+  background-color: #dfdfdf;
 }
 
 .no-gutters {

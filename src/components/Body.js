@@ -4,7 +4,6 @@ import Column from "./Column";
 import Container from "react-bootstrap/Container";
 
 const API = "http://localhost:3000/neighborhoods";
-// const alphabetizeStart = "m";
 
 class Body extends Component {
   state = {
@@ -19,8 +18,8 @@ class Body extends Component {
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          neighborhoods: data,
-          selectedNeighborhoodIDs: this.allIDsFromJsonObject(data)
+          neighborhoods: this.sortNeighborhoods(data),
+          selectedNeighborhoodIDs: this.allIDsFromJsonObject(data),
         });
       })
       .catch((error) => {
@@ -29,8 +28,14 @@ class Body extends Component {
   }
 
   allIDsFromJsonObject = (jsonObj) => {
-    return jsonObj.map( neighborhood => neighborhood.id )
-  }
+    return jsonObj.map((neighborhood) => neighborhood.id);
+  };
+
+  sortNeighborhoods = (jsonObj) => {
+    return jsonObj.sort((a, b) =>
+      a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+    )
+  };
 
   allNeighborhoodIDsAndNames = () => {
     return this.state.neighborhoods.map((neighborhood) => {
@@ -51,7 +56,8 @@ class Body extends Component {
       name: neighborhood.name,
       apartments: neighborhood.apartments.filter(
         (apt) =>
-          apt.price >= parseInt(this.state.priceLow) - 100 && apt.price <= parseInt(this.state.priceHigh) -100
+          apt.price >= parseInt(this.state.priceLow) - 100 &&
+          apt.price <= parseInt(this.state.priceHigh) - 100
       ),
     }));
     return newArr;
@@ -63,12 +69,13 @@ class Body extends Component {
       name: neighborhood.name,
       apartments: neighborhood.apartments.filter(
         (apt) =>
-          apt.price >= parseInt(this.state.priceLow) + 99 && apt.price <= parseInt(this.state.priceHigh) + 99
+          apt.price >= parseInt(this.state.priceLow) + 99 &&
+          apt.price <= parseInt(this.state.priceHigh) + 99
       ),
     }));
     return newArr;
   };
-  
+
   filterNeighborhoodsByPrice = () => {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
@@ -86,7 +93,7 @@ class Body extends Component {
   };
 
   updatePrice = (low, high) => {
-    console.log("updatePrice called")
+    console.log("updatePrice called");
     this.setState({
       priceLow: parseInt(low),
       priceHigh: parseInt(high),

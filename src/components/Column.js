@@ -18,7 +18,7 @@ class Column extends Component {
               selectedIDs={this.props.selectedIDs}
             />
           </Col>
-          <Col id="outer" className="pinstripeDark-color">
+          <Col id="outer" className="pinstripeLight-color">
             <div 
               className="arrow-box-left d-flex align-items-center justify-content-center"
               onClick={() =>
@@ -35,12 +35,11 @@ class Column extends Component {
 
           <Col className="filter-bar border-bottom d-flex flex-row justify-content-center pinstripeLight-color"  id="center" >
             <div>
-              {/* <p>Price Point</p> */}
               ${this.props.priceLow} – ${this.props.priceHigh}
             </div>
           </Col>
-          <Col id="outer" className="pinstripeDark-color">
-            <div  id="outer" 
+          <Col id="outer" className="pinstripeLight-color">
+            <div
               className="arrow-box-right d-flex align-items-center justify-content-center "
               onClick={() =>
                 this.props.updatePrice(

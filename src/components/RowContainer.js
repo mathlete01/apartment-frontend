@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { default as TileRow } from "./Row_";
 import Container from "react-bootstrap/Container";
-// import { Container } from 'reactstrap';
+import { BsChevronDoubleUp, BsChevronDoubleDown } from "react-icons/bs";
 
 class RowContainer extends Component {
 
@@ -52,10 +52,6 @@ class RowContainer extends Component {
     )
   }
 
-  // sortApartments = (apartmentArray) => {
-  //   return apartmentArray.sort((a, b) => a.price - b.price);
-  // };
-
   render() {
     return (
       <Container
@@ -66,6 +62,8 @@ class RowContainer extends Component {
         {this.buildRowTop(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
         {this.buildRowMiddle(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
         {this.buildRowBottom(this.props.neighborhoodsLow, this.props.neighborhoodsCenter, this.props.neighborhoodsHigh)}
+        <div className='d-flex justify-content-center apt-arrow-up col-md-1'><BsChevronDoubleUp /></div>
+        <div className='d-flex justify-content-center apt-arrow-down col-md-1'><BsChevronDoubleDown /></div>
       </Container>
     );
   }

@@ -14,6 +14,7 @@ body {
 }
 
 #row-container {
+  position: relative;
   flex-grow: 1;
 }
 
@@ -177,4 +178,35 @@ h5 {
   top: 50%;
   -ms-transform: translateY(-17%);
   transform: translateY(-17%);
+}
+
+.other {
+float: left;
+width: 50%;
+}
+
+.apt-arrow-up {
+  position: absolute !important;
+  top: 0%;
+  left: 0%;
+}
+
+.apt-arrow-down {
+  position: absolute !important;
+  bottom: 0%;
+  left: 0%;
+}
+
+.apt-arrow-up > *, .apt-arrow-down > * {
+  width: 40%;
+  height: auto;
+}
+
+label {
+  margin: 0 2px;
+}
+
+#neighborhoods-dropdown-form {
+  max-height: 300px;
+  overflow: auto;
 }

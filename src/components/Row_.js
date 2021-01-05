@@ -32,7 +32,7 @@ class Row_ extends Component {
           className="border-right nav-color d-flex flex-column align-items-center justify-content-center"
           md={1}
         >
-          <p className="text-center">{this.props.name}</p>y
+          <p className="text-center">{this.props.name}</p>
         </Col>
           <div className="tile-container d-flex justify-content-around">
             <TileContainer neighborhood={this.props.left} />

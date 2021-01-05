@@ -81,19 +81,13 @@ class Body extends Component {
     this.setState({ selectedNeighborhoodIDs: neighborhoodArray });
   };
 
-  updatePriceLow = (low, high) => {
-    console.log("updatePriceLow called")
+  updatePrice = (low, high) => {
+    console.log("updatePrice called")
     this.setState({
       priceLow: parseInt(low),
       priceHigh: parseInt(high),
     });
   };
-  // updatePriceHigh = (high) => {
-  //   console.log("updatePriceHigh called")
-  //   this.setState({
-  //     priceHigh: parseInt(high),
-  //   });
-  // };
 
   render() {
     return (
@@ -104,7 +98,7 @@ class Body extends Component {
           selectedIDs={this.state.selectedNeighborhoodIDs}
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
-          updatePriceLow={this.updatePriceLow}
+          updatePrice={this.updatePrice}
         />
         <RowContainer
           neighborhoodsCenter={this.filterNeighborhoodsByPrice()}

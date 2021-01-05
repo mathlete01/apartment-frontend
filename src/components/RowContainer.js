@@ -47,7 +47,7 @@ class RowContainer extends Component {
       left = {row3col1}
       center = {row3col2}
       right = {row3col3} 
-      updatePriceLow = {this.props.updatePriceLow}
+      updatePrice = {this.props.updatePrice}
       />
     )
   }

@@ -20,12 +20,16 @@ class Body extends Component {
       .then((data) => {
         this.setState({
           neighborhoods: data,
-          selectedNeighborhoodIDs: [data[2].id, data[4].id, data[8].id],
+          selectedNeighborhoodIDs: this.allIDsFromJsonObject(data)
         });
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+  }
+
+  allIDsFromJsonObject = (jsonObj) => {
+    return jsonObj.map( neighborhood => neighborhood.id )
   }
 
   allNeighborhoodIDsAndNames = () => {

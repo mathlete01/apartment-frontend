@@ -18,40 +18,47 @@ class Column extends Component {
               selectedIDs={this.props.selectedIDs}
             />
           </Col>
-          <Col id="outer" className="pinstripeLight-color">
-            <div 
-              className="arrow-box-left d-flex align-items-center justify-content-center"
-              onClick={() =>
+
+          <BsChevronDoubleLeft 
+            size='2em' 
+            className='price-arrow' 
+            onClick={() =>
                 this.props.updatePrice(
                   this.props.priceLow - 100,
                   this.props.priceHigh - 100
                 )
               }
-            >
-              <BsChevronDoubleLeft size="2em" />
+          />
+
+          <Col className="d-flex align-items-center justify-content-center">
+            <div>
               ${this.props.priceLow - 100} – ${this.props.priceHigh - 100}
             </div>
           </Col>
 
-          <Col className="filter-bar border-bottom d-flex flex-row justify-content-center pinstripeLight-color"  id="center" >
+          <Col className="d-flex align-items-center justify-content-center">
             <div>
               ${this.props.priceLow} – ${this.props.priceHigh}
             </div>
           </Col>
-          <Col id="outer" className="pinstripeLight-color">
-            <div
-              className="arrow-box-right d-flex align-items-center justify-content-center "
-              onClick={() =>
+
+          <Col className="d-flex align-items-center justify-content-center">
+            <div>
+              ${this.props.priceLow + 100} – ${this.props.priceHigh + 100}
+            </div>
+          </Col>
+
+          <BsChevronDoubleRight 
+            size='2em' 
+            className='price-arrow' 
+            onClick={() =>
                 this.props.updatePrice(
                   this.props.priceLow + 100,
                   this.props.priceHigh + 100
                 )
               }
-            >
-              ${this.props.priceLow + 100} – ${this.props.priceHigh + 100}
-              <BsChevronDoubleRight size="2em" />
-            </div>
-          </Col>
+          />
+          
         </Row>
       </Container>
     );

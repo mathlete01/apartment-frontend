@@ -18,6 +18,7 @@ class Column extends Component {
               selectedIDs={this.props.selectedIDs}
             />
           </Col>
+          <BsChevronDoubleLeft size="2em" />
           <Col>
             <div
               className="arrow-box-left d-flex align-items-center justify-content-center"
@@ -28,7 +29,6 @@ class Column extends Component {
                 )
               }
             >
-              <BsChevronDoubleLeft size="2em" />
               ${this.props.priceLow - 100} – ${this.props.priceHigh - 100}
             </div>
           </Col>

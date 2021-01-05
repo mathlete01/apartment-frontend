@@ -27,27 +27,20 @@ class Body extends Component {
       });
   }
 
-  allIDsFromJsonObject = (jsonObj) => {
-    return jsonObj.map((neighborhood) => neighborhood.id);
-  };
-
   sortNeighborhoods = (jsonObj) => {
     return jsonObj.sort((a, b) =>
       a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
     )
   };
 
+  allIDsFromJsonObject = (jsonObj) => {
+    return jsonObj.map((neighborhood) => neighborhood.id);
+  };
+
   allNeighborhoodIDsAndNames = () => {
     return this.state.neighborhoods.map((neighborhood) => {
       return { id: neighborhood.id, name: neighborhood.name };
     });
-  };
-
-  selectNeighborhoods = () => {
-    let selectedNeighborhoods = this.state.selectedNeighborhoodIDs.map((id) =>
-      this.state.neighborhoods.find((neighborhood) => neighborhood.id === id)
-    );
-    return selectedNeighborhoods;
   };
 
   filterNeighborhoodsByPriceLow = () => {
@@ -76,7 +69,7 @@ class Body extends Component {
     return newArr;
   };
 
-  filterNeighborhoodsByPrice = () => {
+  filterNeighborhoodsByPriceCenter = () => {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
@@ -88,12 +81,18 @@ class Body extends Component {
     return newArr;
   };
 
+  selectNeighborhoods = () => {
+    let selectedNeighborhoods = this.state.selectedNeighborhoodIDs.map((id) =>
+      this.state.neighborhoods.find((neighborhood) => neighborhood.id === id)
+    );
+    return selectedNeighborhoods;
+  };
+
   updateSelectedNeighborhoods = (neighborhoodArray) => {
     this.setState({ selectedNeighborhoodIDs: neighborhoodArray });
   };
 
   updatePrice = (low, high) => {
-    console.log("updatePrice called");
     this.setState({
       priceLow: parseInt(low),
       priceHigh: parseInt(high),
@@ -112,7 +111,7 @@ class Body extends Component {
           updatePrice={this.updatePrice}
         />
         <RowContainer
-          neighborhoodsCenter={this.filterNeighborhoodsByPrice()}
+          neighborhoodsCenter={this.filterNeighborhoodsByPriceCenter()}
           neighborhoodsLow={this.filterNeighborhoodsByPriceLow()}
           neighborhoodsHigh={this.filterNeighborhoodsByPriceHigh()}
           priceLow={this.state.priceLow}

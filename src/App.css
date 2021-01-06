@@ -228,3 +228,47 @@ label {
   width: 100%;
   height: 100%;
 }
+
+#welcome-box {
+  max-width: 800px;
+  margin: 5% auto;
+}
+
+#landing-page {
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: rgb(177,194,213);
+  background: linear-gradient(142deg, rgba(177,194,213,1) 0%, rgba(214,224,241,1) 51%, rgba(255,255,255,1) 100%);
+}
+
+#welcome-container {
+  padding: 2%;
+}
+
+#sample-container {
+  margin: 0 auto;
+  width: 33%;
+  /* padding: 2%; */
+}
+
+#sample-container > div.tile {
+  flex: 1;
+}
+
+#browse-by-neighborhood-img {
+  /* position: absolute; */
+  height: 50%;
+  width: auto;
+  margin: auto;
+}
+
+#browse-by-price-img {
+  margin: 2% auto 0;
+  height: auto;
+  width: 50%;
+}
+
+#landing-page > div.flex-grow-1 {
+  padding: 2%;
+}

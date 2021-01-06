@@ -20,7 +20,12 @@ class RowContainer extends Component {
       name={neighborhoodName} 
       left = {row1col1}
       center = {row1col2}
-      right = {row1col3} />
+      right = {row1col3} 
+      handleLike = {this.props.handleLike}
+      likedApts = {this.props.likedApts}
+      handleDislike = {this.props.handleDislike}
+      dislikedApts = {this.props.dislikedApts}
+      />
     )
   }
 
@@ -36,7 +41,12 @@ class RowContainer extends Component {
       name={neighborhoodName} 
       left = {row2col1}
       center = {row2col2}
-      right = {row2col3} />
+      right = {row2col3} 
+      handleLike = {this.props.handleLike}
+      likedApts = {this.props.likedApts}
+      handleDislike = {this.props.handleDislike}
+      dislikedApts = {this.props.dislikedApts}
+      />
     )
   }
 
@@ -54,6 +64,10 @@ class RowContainer extends Component {
       center = {row3col2}
       right = {row3col3} 
       updatePrice = {this.props.updatePrice}
+      handleLike = {this.props.handleLike}
+      likedApts = {this.props.likedApts}
+      handleDislike = {this.props.handleDislike}
+      dislikedApts = {this.props.dislikedApts}
       />
     )
   }

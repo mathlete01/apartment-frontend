@@ -11,7 +11,7 @@ import {
 
 class TileContainer extends Component {
   state = {
-    counter: 0,
+    counter: 0
   };
 
   nextApt = () => {
@@ -32,9 +32,29 @@ class TileContainer extends Component {
     });
   };
 
+  // componentDidMount(){
+  //   //build function
+  //   this.setState({
+  //     filteredApts: this.props.neighborhood.apartments
+  //   })
+  // }
+
+  apartmentIsDisliked = (id) => {
+    return !!this.props.dislikedApts.find(aptId => id === aptId)
+  }
+
   buildTile = () => {
     let apt = this.props.neighborhood.apartments[this.state.counter];
-    return apt ? <Tile apartment={apt} className="tile" /> : null;
+    if (apt && this.apartmentIsDisliked(apt.id)) return;
+    return apt ?
+    <Tile 
+    apartment={apt} 
+    className="tile" 
+    handleLike={this.props.handleLike} 
+    likedApts={this.props.likedApts} 
+    handleDislike = {this.props.handleDislike}
+    dislikedApts = {this.props.dislikedApts}
+    apartmentIsDisliked = {this.apartmentIsDisliked}/> : null;
   };
 
   buildTileBlank = () => {

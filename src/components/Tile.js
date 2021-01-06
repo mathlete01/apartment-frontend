@@ -10,7 +10,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
-const Tile = ({apartment, handleLike, likedApts, handleDislike, dislikedApts, apartmentIsDisliked}) => {
+const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisliked}) => {
 
     //like / dislike buttons
     const [display, setDisplay] = useState(false);
@@ -25,25 +25,30 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, dislikedApts, ap
     };
 
     const handleLikeEvent = e => {
-        if (apartmentIsLiked() === true) {
-          handleLike("unlike", apartment.id)
-        }
-        else{
-          handleLike("like", apartment.id)
-        }
+      if (!handleLike) return
+
+      if (apartmentIsLiked() === true) {
+        handleLike("unlike", apartment.id)
+      }
+      else{
+        handleLike("like", apartment.id)
+      }
     }
 
     const apartmentIsLiked = () => {
+      if (!likedApts) return
       return !!likedApts.find(aptId => apartment.id === aptId)
     }
 
     const handleDislikeEvent = e => {
-        if (apartmentIsDisliked() === true) {
-          handleDislike("undislike", apartment.id)
-        }
-        else{
-          handleDislike("dislike", apartment.id)
-        }
+      if (!handleDislike) return
+
+      if (apartmentIsDisliked() === true) {
+        handleDislike("undislike", apartment.id)
+      }
+      else{
+        handleDislike("dislike", apartment.id)
+      }
     }
 
     // const apartmentIsDisliked = () => {

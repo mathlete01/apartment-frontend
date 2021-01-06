@@ -32,14 +32,8 @@ class TileContainer extends Component {
     });
   };
 
-  // componentDidMount(){
-  //   //build function
-  //   this.setState({
-  //     filteredApts: this.props.neighborhood.apartments
-  //   })
-  // }
-
   apartmentIsDisliked = (id) => {
+    if (!this.props.dislikedApts) return
     return !!this.props.dislikedApts.find(aptId => id === aptId)
   }
 

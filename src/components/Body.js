@@ -6,12 +6,25 @@ import Container from "react-bootstrap/Container";
 const API = "http://localhost:3000/neighborhoods";
 
 class Body extends Component {
+  constructor() {
+    super();
+
+    this.updateBedrooms = this.updateBedrooms.bind(this);
+  }
+
   state = {
     neighborhoods: [],
     selectedNeighborhoodIDs: [],
     priceLow: 2000,
     priceHigh: 2099,
+    bedrooms: "any",
   };
+
+  updateBedrooms(event) {
+    this.setState({
+      bedrooms: event.target.value,
+    });
+  }
 
   componentDidMount() {
     fetch(API)
@@ -30,7 +43,7 @@ class Body extends Component {
   sortNeighborhoods = (jsonObj) => {
     return jsonObj.sort((a, b) =>
       a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
-    )
+    );
   };
 
   allIDsFromJsonObject = (jsonObj) => {
@@ -47,11 +60,24 @@ class Body extends Component {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
-      apartments: neighborhood.apartments.filter(
-        (apt) =>
-          apt.price >= parseInt(this.state.priceLow) - 100 &&
-          apt.price <= parseInt(this.state.priceHigh) - 100
-      ),
+      apartments: neighborhood.apartments.filter((apt) => {
+        if (this.state.bedrooms === "any") {
+          if (
+            apt.price >= parseInt(this.state.priceLow) - 100 &&
+            apt.price <= parseInt(this.state.priceHigh) - 100
+          ) {
+            return apt;
+          }
+        } else {
+          if (
+            apt.price >= parseInt(this.state.priceLow) - 100 &&
+            apt.price <= parseInt(this.state.priceHigh) - 100 &&
+            apt.bedrooms === parseInt(this.state.bedrooms)
+          ) {
+            return apt;
+          }
+        }
+      }),
     }));
     return newArr;
   };
@@ -60,11 +86,24 @@ class Body extends Component {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
-      apartments: neighborhood.apartments.filter(
-        (apt) =>
-          apt.price >= parseInt(this.state.priceLow) + 99 &&
-          apt.price <= parseInt(this.state.priceHigh) + 99
-      ),
+      apartments: neighborhood.apartments.filter((apt) => {
+        if (this.state.bedrooms === "any") {
+          if (
+            apt.price >= parseInt(this.state.priceLow) + 99 &&
+            apt.price <= parseInt(this.state.priceHigh) + 99
+          ) {
+            return apt;
+          }
+        } else {
+          if (
+            apt.price >= parseInt(this.state.priceLow) + 99 &&
+            apt.price <= parseInt(this.state.priceHigh) + 99 &&
+            apt.bedrooms === parseInt(this.state.bedrooms)
+          ) {
+            return apt;
+          }
+        }
+      }),
     }));
     return newArr;
   };
@@ -73,13 +112,28 @@ class Body extends Component {
     let newArr = this.selectNeighborhoods().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
-      apartments: neighborhood.apartments.filter(
-        (apt) =>
-          apt.price >= this.state.priceLow && apt.price <= this.state.priceHigh
-      ),
+      apartments: neighborhood.apartments.filter((apt) => {
+        if (this.state.bedrooms === "any") {
+          if (
+            apt.price >= parseInt(this.state.priceLow) &&
+            apt.price <= parseInt(this.state.priceHigh)
+          ) {
+            return apt;
+          }
+        } else {
+          if (
+            apt.price >= parseInt(this.state.priceLow)  &&
+            apt.price <= parseInt(this.state.priceHigh) &&
+            apt.bedrooms === parseInt(this.state.bedrooms)
+          ) {
+            return apt;
+          }
+        }
+      }),
     }));
     return newArr;
   };
+
 
   selectNeighborhoods = () => {
     let selectedNeighborhoods = this.state.selectedNeighborhoodIDs.map((id) =>
@@ -109,6 +163,7 @@ class Body extends Component {
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
           updatePrice={this.updatePrice}
+          updateBedrooms={this.updateBedrooms}
         />
         <RowContainer
           neighborhoodsCenter={this.filterNeighborhoodsByPriceCenter()}

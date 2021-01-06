@@ -32,11 +32,23 @@ class Row_ extends Component {
         >
           <p className="text-center">{this.props.name}</p>
         </Col>
-          <div className="tile-container d-flex justify-content-around">
-            <TileContainer id="outer" className="pinstripeDark-color" neighborhood={this.props.left} />
-            <TileContainer id="center" neighborhood={this.props.center} />
-            <TileContainer id="outer" neighborhood={this.props.right} />
-          </div>
+        <div className="tile-container d-flex justify-content-around">
+          <TileContainer
+            id="outer"
+            className="pinstripeDark-color"
+            neighborhood={this.props.left}
+          />
+          <TileContainer
+            id="center"
+            className="pinstripeLight-color"
+            neighborhood={this.props.center}
+          />
+          <TileContainer
+            id="outer"
+            className="pinstripeDark-color"
+            neighborhood={this.props.right}
+          />
+        </div>
       </Row>
     );
   }

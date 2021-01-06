@@ -1,7 +1,7 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import React, { useState } from 'react';
 
-const NeighborhoodDropdown = ({ neighborhoods, selectedIDs, handleNeighborhoodChange }) => {
+const NeighborhoodDropdown = ({ neighborhoods, selectedIDs, handleNeighborhoodChange, updateBedrooms }) => {
 
     const [show, setShow] = useState(false);
 
@@ -58,9 +58,22 @@ const NeighborhoodDropdown = ({ neighborhoods, selectedIDs, handleNeighborhoodCh
     return (
         <Dropdown show={ show } onToggle={ handleDropdownClick }>
             <Dropdown.Toggle variant='secondary'>
-                filter
+                Filter
             </Dropdown.Toggle>
             <Dropdown.Menu>
+            <Dropdown.Header>Bedrooms</Dropdown.Header>
+                <Dropdown.Item id='bedrooms' as='select' onChange={ updateBedrooms } > 
+                    <Dropdown.Item id='any' as='option' > any </Dropdown.Item> 
+                    <Dropdown.Item id='0' as='option' > 0  </Dropdown.Item>
+                    <Dropdown.Item id='1' as='option' > 1  </Dropdown.Item>
+                    <Dropdown.Item id='2' as='option' > 2  </Dropdown.Item>
+                    <Dropdown.Item id='3' as='option' > 3  </Dropdown.Item>
+                    <Dropdown.Item id='4' as='option' > 4  </Dropdown.Item>
+                    <Dropdown.Item id='5' as='option' > 5  </Dropdown.Item>
+                    <Dropdown.Item id='6' as='option' > 6  </Dropdown.Item>
+                    <Dropdown.Item id='7' as='option' > 7  </Dropdown.Item>
+                    <Dropdown.Item id='8' as='option' > 8  </Dropdown.Item>
+                </Dropdown.Item>
                 <Dropdown.Header>Neighborhoods</Dropdown.Header>
                 <Dropdown.Divider />
                 <Dropdown.Item id='neighborhoods-dropdown-form' as='form' onChange={ handleClick } >

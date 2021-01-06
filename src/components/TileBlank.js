@@ -19,7 +19,7 @@ const TileBlank = () => {
             </Container>
             <div className="d-flex justify-content-between align-items-center">    
                 <FaRegThumbsUp color="green" size="35px"/>
-                <h6 className='card-title' style={{width: '20rem'}}></h6>
+                <h6 className='card-title' style={{width: '20rem'}}>FOO</h6>
                 <FaRegThumbsDown color="red" size="35px"/>
             </div>
         </Card>

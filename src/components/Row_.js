@@ -33,9 +33,27 @@ class Row_ extends Component {
           <p className="text-center">{this.props.name}</p>
         </Col>
           <div className="tile-container d-flex justify-content-around">
-            <TileContainer id="outer" className="pinstripeDark-color" neighborhood={this.props.left} handleLike = {this.props.handleLike} likedApts={this.props.likedApts}/>
-            <TileContainer id="center" neighborhood={this.props.center} handleLike = {this.props.handleLike} likedApts = {this.props.likedApts}/>
-            <TileContainer id="outer" neighborhood={this.props.right} handleLike = {this.props.handleLike} likedApts = {this.props.likedApts}/>
+            <TileContainer id="outer" className="pinstripeDark-color" 
+            neighborhood={this.props.left} 
+            handleLike = {this.props.handleLike} 
+            likedApts={this.props.likedApts} 
+            handleDislike = {this.props.handleDislike}
+            dislikedApts = {this.props.dislikedApts}
+            />
+            <TileContainer id="center" 
+            neighborhood={this.props.center} 
+            handleLike = {this.props.handleLike} 
+            likedApts = {this.props.likedApts} 
+            handleDislike = {this.props.handleDislike}
+            dislikedApts = {this.props.dislikedApts}
+            />
+            <TileContainer id="outer" 
+            neighborhood={this.props.right} 
+            handleLike = {this.props.handleLike} 
+            likedApts = {this.props.likedApts} 
+            handleDislike = {this.props.handleDislike}
+            dislikedApts = {this.props.dislikedApts}
+            />
           </div>
       </Row>
     );

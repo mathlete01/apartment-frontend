@@ -90,6 +90,11 @@ class Body extends Component {
     return selectedNeighborhoods;
   };
 
+  filterDislikedApartments = () => {
+    let newArr = this.selectNeighborhoods().map(neighborhood => 
+    )
+  }
+
   updateSelectedNeighborhoods = (neighborhoodArray) => {
     this.setState({ selectedNeighborhoodIDs: neighborhoodArray });
   };
@@ -118,6 +123,23 @@ class Body extends Component {
     }
   }
 
+  handleDislike = (str, id) => {
+    if (str === "dislike"){
+      this.setState(prevState => {
+        return{
+          dislikedApartments: [...prevState.dislikedApartments, id ]
+        }
+      })
+    }
+    else if (str === "undislike"){
+      this.setState(prevState => {
+        return{
+          dislikedApartments: [...prevState.dislikedApartments.filter(aptId => aptId !== id)]
+        }
+      })
+    }
+  }
+
   render() {
     return (
       <Container id="body-container" className="d-flex flex-column" fluid>
@@ -137,6 +159,8 @@ class Body extends Component {
           priceHigh={this.state.priceHigh}
           handleLike={this.handleLike}
           likedApts={this.state.likedApartments}
+          handleDislike={this.handleDislike}
+          dislikedApts={this.state.dislikedApartments}
         />
       </Container>
     );

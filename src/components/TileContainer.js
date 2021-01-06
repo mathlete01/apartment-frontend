@@ -12,12 +12,13 @@ import {
 class TileContainer extends Component {
   state = {
     counter: 0,
+    filteredApts: []
   };
 
   nextApt = () => {
     console.log("nextApt");
     console.log(this.state.counter);
-    if (this.state.counter >= this.props.neighborhood.apartments.length - 1)
+    if (this.state.counter >= this.state.filteredApts.length - 1)
       return;
     this.setState((prevState) => {
       return { counter: prevState.counter + 1 };
@@ -32,10 +33,29 @@ class TileContainer extends Component {
     });
   };
 
+  // componentDidMount(){
+  //   //build function
+  //   this.setState({
+  //     filteredApts: this.props.neighborhood.apartments
+  //   })
+  // }
+
+  apartmentIsDisliked = (id) => {
+    return !!this.props.dislikedApts.find(aptId => id === aptId)
+  }
+
   buildTile = () => {
-    //build a check to see if apt id is in dislikedApts
-    let apt = this.props.neighborhood.apartments[this.state.counter];
-    return apt ? <Tile apartment={apt} className="tile" handleLike={this.props.handleLike} likedApts={this.props.likedApts}/> : null;
+    let apt = this.state.filteredApts[this.state.counter];
+    if (apt && this.apartmentIsDisliked(apt.id)) return;
+    return apt ?
+    <Tile 
+    apartment={apt} 
+    className="tile" 
+    handleLike={this.props.handleLike} 
+    likedApts={this.props.likedApts} 
+    handleDislike = {this.props.handleDislike}
+    dislikedApts = {this.props.dislikedApts}
+    apartmentIsDisliked = {this.apartmentIsDisliked}/> : null;
   };
 
   buildTileBlank = () => {
@@ -63,13 +83,13 @@ class TileContainer extends Component {
     return (
       <Container className="d-flex justify-content-center align-items-stretch" id={this.props.id}>
         {this.props.neighborhood
-          ? this.props.neighborhood.apartments.length > 1
+          ? this.state.filteredApts.length > 1
             ? this.showArrowLeft()
             : null
           : null}
         {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()}
         {this.props.neighborhood
-          ? this.props.neighborhood.apartments.length > 1
+          ? this.state.filteredApts.length > 1
             ? this.showArrowRight()
             : null
           : null}

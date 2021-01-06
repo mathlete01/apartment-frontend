@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import PriceFilter from "./PriceFilter";
+// import PriceFilter from "./PriceFilter";
 import NeighborhoodDropdown from "./NeighborhoodDropdown";
 import { BsChevronDoubleLeft, BsChevronDoubleRight } from "react-icons/bs";
 
@@ -16,6 +16,7 @@ class Column extends Component {
               handleNeighborhoodChange={this.props.handleNeighborhoodChange}
               neighborhoods={this.props.neighborhoods}
               selectedIDs={this.props.selectedIDs}
+              updateBedrooms = {this.props.updateBedrooms}
             />
           </Col>
           <Col id="outer" className="pinstripeLight-color">

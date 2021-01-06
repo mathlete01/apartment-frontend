@@ -5,8 +5,8 @@ import Container from "react-bootstrap/Container";
 import {
   BsChevronLeft,
   BsChevronRight,
-  BsChevronDoubleLeft,
-  BsChevronDoubleRight,
+  // BsChevronDoubleLeft,
+  // BsChevronDoubleRight,
 } from "react-icons/bs";
 
 class TileContainer extends Component {

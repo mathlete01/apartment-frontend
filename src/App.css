@@ -82,32 +82,23 @@ div.modal-dialog {
 }
 
 div.shadow.card {
-  margin: 5px;
+  margin: 2% 5%;
 }
 
-.circle {
+/* .circle {
   border-radius: 50%;
   background-color: rgb(56, 56, 56);
   width: 30px;
   height: 30px;
   display: flex;
   justify-content: center;
-}
+} */
 
 .circle > p {
   text-align: center;
   color: white;
   font-size: 18px;
 }
-
-/* .tile-container {
-  margin: 0 !important;
-  display: grid;
-  grid-template-columns: 33.3% 33.3% 33.3%;
-  grid-template-rows: auto;
-  grid-template-areas: 
-    "tile-1 tile-2 tile-3";
-} */
 
 .tile-container > .card {
   margin: 0 0.35rem;
@@ -124,16 +115,14 @@ div.shadow.card {
 }
 
 h5 {
-  width: 20rem;
   text-align: center;
   margin: 0.4rem 0.4rem;
   max-width: 350px;
 }
 
-.tile-row {
+/* .tile-row {
   flex-grow: 1;
-
-}
+} */
 
 .spec-container > span {
   font-size: 0.75rem;
@@ -151,23 +140,13 @@ h5 {
   margin: 0 16px;
 }
 
-.arrow-box-right:hover {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #f8f9fa );
-  cursor: pointer;
-}
-
 .arrow-box-left > * {
   margin: 0 16px;
 }
 
-.arrow-box-left:hover {
-  background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #f8f9fa );
-  cursor: pointer;
-}
-
 .tile-container {
-  margin: 0;
   flex: 1;
+  overflow: auto;
 }
 
 .tile-container > .container {
@@ -180,18 +159,10 @@ h5 {
   /* border: 3px solid green; */
 }
 
-.vertical-center {
-  /* margin: 0; */
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-17%);
-  transform: translateY(-17%);
-}
-
-.other {
+/* .other {
 float: left;
 width: 50%;
-}
+} */
 
 .apt-arrow-up {
   position: absolute !important;
@@ -217,6 +188,43 @@ label {
 #neighborhoods-dropdown-form {
   max-height: 300px;
   overflow: auto;
-  background:#FFF !important;
-  color:#000 !important;
+}
+
+.tile {
+  position: relative;
+}
+
+.tile-left-arrow {
+  position: absolute;
+  left: 0%;
+  width: 10%;
+  height: 100%;
+}
+
+.tile-left-arrow:hover, .tile-right-arrow:hover {
+  cursor: pointer;
+}
+
+.tile-right-arrow {
+  position: absolute;
+  right: 0%;
+  width: 10%;
+  height: 100%;
+}
+
+.price-arrow {
+  margin: auto 2px;
+}
+
+.price-arrow:hover {
+  cursor: pointer;
+}
+
+.filter-box {
+  padding: 0;
+}
+
+.filter-box > div > button {
+  width: 100%;
+  height: 100%;
 }

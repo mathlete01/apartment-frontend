@@ -10,29 +10,37 @@ import Carousel from 'react-bootstrap/Carousel'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
-const Tile = ({apartment}) => {
+const Tile = ({apartment, handleLike, likedApts}) => {
 
     //like / dislike buttons
-    const [display, setDisplay] = useState("notdisplayed");
+    const [display, setDisplay] = useState(false);
     const showButton = e => {
         e.preventDefault();
-        setDisplay("displayed");
+        setDisplay(true);
     };
 
     const hideButton = e => {
         e.preventDefault();
-        setDisplay("notdisplayed");
+        setDisplay(false);
     };
 
-    const [like, setLiked] = useState(false)
-    const handleLike = e => {
-        setLiked(!like)
+    const handleLikeEvent = e => {
+      //dont want this to run if this apt.id is in likedApts
+        if (apartmentIsLiked() === true) {
+          handleLike("unlike", apartment.id)
+        }
+        else{
+          handleLike("like", apartment.id)
+        }
+    }
+
+    const apartmentIsLiked = () => {
+      return !!likedApts.find(aptId => apartment.id === aptId)
     }
 
     const [dislike, setDisliked] = useState(false)
     const handleDislike = e => {
       setDisliked(!dislike)
-      //remove this apartment from the tile stack 
     }
 
     //controlled carousel 
@@ -77,7 +85,7 @@ const Tile = ({apartment}) => {
                 </Carousel>
               <div className="d-flex justify-content-around" style={{height: '60px'}}> 
                 {dislike === true ? <FaThumbsDown color="red" size="35px" onClick={handleDislike} className="align-self-center"/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislike} className="align-self-center"/> }
-                {like === true ? <FaThumbsUp color="green" size="35px" onClick={handleLike} className="align-self-center"/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLike} className="align-self-center"/>}
+                {apartmentIsLiked() ? <FaThumbsUp color="green" size="35px" onClick={handleLikeEvent} className="align-self-center"/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLikeEvent} className="align-self-center"/>}
               </div>
               <h4>Description</h4>
               <ul>
@@ -117,7 +125,7 @@ const Tile = ({apartment}) => {
             <div className="d-flex justify-content-between align-items-center">
                 {dislike === true ? <FaThumbsDown color="red" size="35px" onClick={handleDislike}/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislike}/> }
                 <h6 className='card-title' style={{width: '20rem'}}>{apartment.title}</h6>
-                {like === true ? <FaThumbsUp color="green" size="35px" onClick={handleLike}/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLike}/>}    
+                {apartmentIsLiked() ? <FaThumbsUp color="green" size="35px" onClick={handleLikeEvent}/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLikeEvent}/>}    
             </div>
         </Card>
         <CenteredModal

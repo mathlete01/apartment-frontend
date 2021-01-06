@@ -33,8 +33,9 @@ class TileContainer extends Component {
   };
 
   buildTile = () => {
+    //build a check to see if apt id is in dislikedApts
     let apt = this.props.neighborhood.apartments[this.state.counter];
-    return apt ? <Tile apartment={apt} className="tile" /> : null;
+    return apt ? <Tile apartment={apt} className="tile" handleLike={this.props.handleLike} likedApts={this.props.likedApts}/> : null;
   };
 
   buildTileBlank = () => {

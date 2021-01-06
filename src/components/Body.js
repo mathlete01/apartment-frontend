@@ -11,6 +11,8 @@ class Body extends Component {
     selectedNeighborhoodIDs: [],
     priceLow: 2000,
     priceHigh: 2099,
+    likedApartments: [],
+    dislikedApartments: []
   };
 
   componentDidMount() {
@@ -99,6 +101,23 @@ class Body extends Component {
     });
   };
 
+  handleLike = (str, id) => {
+    if (str === "like"){
+      this.setState(prevState => {
+        return{
+          likedApartments: [...prevState.likedApartments, id ]
+        }
+      })
+    }
+    else if (str === "unlike"){
+      this.setState(prevState => {
+        return{
+          likedApartments: [...prevState.likedApartments.filter(aptId => aptId !== id)]
+        }
+      })
+    }
+  }
+
   render() {
     return (
       <Container id="body-container" className="d-flex flex-column" fluid>
@@ -116,6 +135,8 @@ class Body extends Component {
           neighborhoodsHigh={this.filterNeighborhoodsByPriceHigh()}
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
+          handleLike={this.handleLike}
+          likedApts={this.state.likedApartments}
         />
       </Container>
     );

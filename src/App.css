@@ -219,3 +219,12 @@ label {
 .price-arrow:hover {
   cursor: pointer;
 }
+
+.filter-box {
+  padding: 0;
+}
+
+.filter-box > div > button {
+  width: 100%;
+  height: 100%;
+}

@@ -11,7 +11,7 @@ class Column extends Component {
     return (
       <Container className="nav-color border-bottom" bg="light" fluid>
         <Row>
-          <Col md={1} className="border-bottom border-right text-center">
+          <Col md={1} className="filter-box border-bottom border-right text-center">
             <NeighborhoodDropdown
               handleNeighborhoodChange={this.props.handleNeighborhoodChange}
               neighborhoods={this.props.neighborhoods}

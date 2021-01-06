@@ -10,30 +10,50 @@ import Carousel from 'react-bootstrap/Carousel'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
-const Tile = ({apartment}) => {
+const Tile = ({apartment, handleLike, likedApts, handleDislike, dislikedApts, apartmentIsDisliked}) => {
 
     //like / dislike buttons
-    const [display, setDisplay] = useState("notdisplayed");
+    const [display, setDisplay] = useState(false);
     const showButton = e => {
         e.preventDefault();
-        setDisplay("displayed");
+        setDisplay(true);
     };
 
     const hideButton = e => {
         e.preventDefault();
-        setDisplay("notdisplayed");
+        setDisplay(false);
     };
 
-    const [like, setLiked] = useState(false)
-    const handleLike = e => {
-        setLiked(!like)
+    const handleLikeEvent = e => {
+        if (apartmentIsLiked() === true) {
+          handleLike("unlike", apartment.id)
+        }
+        else{
+          handleLike("like", apartment.id)
+        }
     }
 
-    const [dislike, setDisliked] = useState(false)
-    const handleDislike = e => {
-      setDisliked(!dislike)
-      //remove this apartment from the tile stack 
+    const apartmentIsLiked = () => {
+      return !!likedApts.find(aptId => apartment.id === aptId)
     }
+
+    const handleDislikeEvent = e => {
+        if (apartmentIsDisliked() === true) {
+          handleDislike("undislike", apartment.id)
+        }
+        else{
+          handleDislike("dislike", apartment.id)
+        }
+    }
+
+    // const apartmentIsDisliked = () => {
+    //   return !!dislikedApts.find(aptId => apartment.id === aptId)
+    // }
+
+    // const [dislike, setDisliked] = useState(false)
+    // const handleDislike = e => {
+    //   setDisliked(!dislike)
+    // }
 
     //controlled carousel 
     const renderCarousel = () => {
@@ -76,8 +96,8 @@ const Tile = ({apartment}) => {
                 {renderCarousel()}
                 </Carousel>
               <div className="d-flex justify-content-around" style={{height: '60px'}}> 
-                {dislike === true ? <FaThumbsDown color="red" size="35px" onClick={handleDislike} className="align-self-center"/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislike} className="align-self-center"/> }
-                {like === true ? <FaThumbsUp color="green" size="35px" onClick={handleLike} className="align-self-center"/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLike} className="align-self-center"/>}
+                {apartmentIsDisliked() ? <FaThumbsDown color="red" size="35px" onClick={handleDislikeEvent} className="align-self-center"/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislikeEvent} className="align-self-center"/> }
+                {apartmentIsLiked() ? <FaThumbsUp color="green" size="35px" onClick={handleLikeEvent} className="align-self-center"/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLikeEvent} className="align-self-center"/>}
               </div>
               <h4>Description</h4>
               <ul>
@@ -115,9 +135,9 @@ const Tile = ({apartment}) => {
                 <span>${apartment.price}</span>
             </Container>
             <div className="d-flex justify-content-between align-items-center">
-                {dislike === true ? <FaThumbsDown color="red" size="35px" onClick={handleDislike}/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislike}/> }
+                {apartmentIsDisliked() ? <FaThumbsDown color="red" size="35px" onClick={handleDislikeEvent}/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislikeEvent}/> }
                 <h6 className='card-title' style={{width: '20rem'}}>{apartment.title}</h6>
-                {like === true ? <FaThumbsUp color="green" size="35px" onClick={handleLike}/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLike}/>}    
+                {apartmentIsLiked() ? <FaThumbsUp color="green" size="35px" onClick={handleLikeEvent}/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLikeEvent}/>}    
             </div>
         </Card>
         <CenteredModal

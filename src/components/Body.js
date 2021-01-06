@@ -18,6 +18,8 @@ class Body extends Component {
     priceLow: 2000,
     priceHigh: 2099,
     bedrooms: "any",
+    likedApartments: [],
+    dislikedApartments: []
   };
 
   updateBedrooms(event) {
@@ -142,6 +144,11 @@ class Body extends Component {
     return selectedNeighborhoods;
   };
 
+  filterDislikedApartments = () => {
+    let newArr = this.selectNeighborhoods().map(neighborhood => 
+    )
+  }
+
   updateSelectedNeighborhoods = (neighborhoodArray) => {
     this.setState({ selectedNeighborhoodIDs: neighborhoodArray });
   };
@@ -152,6 +159,40 @@ class Body extends Component {
       priceHigh: parseInt(high),
     });
   };
+
+  handleLike = (str, id) => {
+    if (str === "like"){
+      this.setState(prevState => {
+        return{
+          likedApartments: [...prevState.likedApartments, id ]
+        }
+      })
+    }
+    else if (str === "unlike"){
+      this.setState(prevState => {
+        return{
+          likedApartments: [...prevState.likedApartments.filter(aptId => aptId !== id)]
+        }
+      })
+    }
+  }
+
+  handleDislike = (str, id) => {
+    if (str === "dislike"){
+      this.setState(prevState => {
+        return{
+          dislikedApartments: [...prevState.dislikedApartments, id ]
+        }
+      })
+    }
+    else if (str === "undislike"){
+      this.setState(prevState => {
+        return{
+          dislikedApartments: [...prevState.dislikedApartments.filter(aptId => aptId !== id)]
+        }
+      })
+    }
+  }
 
   render() {
     return (
@@ -171,6 +212,10 @@ class Body extends Component {
           neighborhoodsHigh={this.filterNeighborhoodsByPriceHigh()}
           priceLow={this.state.priceLow}
           priceHigh={this.state.priceHigh}
+          handleLike={this.handleLike}
+          likedApts={this.state.likedApartments}
+          handleDislike={this.handleDislike}
+          dislikedApts={this.state.dislikedApartments}
         />
       </Container>
     );

@@ -11,14 +11,13 @@ import {
 
 class TileContainer extends Component {
   state = {
-    counter: 0,
-    filteredApts: []
+    counter: 0
   };
 
   nextApt = () => {
     console.log("nextApt");
     console.log(this.state.counter);
-    if (this.state.counter >= this.state.filteredApts.length - 1)
+    if (this.state.counter >= this.props.neighborhood.apartments.length - 1)
       return;
     this.setState((prevState) => {
       return { counter: prevState.counter + 1 };
@@ -45,7 +44,7 @@ class TileContainer extends Component {
   }
 
   buildTile = () => {
-    let apt = this.state.filteredApts[this.state.counter];
+    let apt = this.props.neighborhood.apartments[this.state.counter];
     if (apt && this.apartmentIsDisliked(apt.id)) return;
     return apt ?
     <Tile 
@@ -83,13 +82,13 @@ class TileContainer extends Component {
     return (
       <Container className="tile d-flex justify-content-center align-items-stretch" id={this.props.id}>
         {this.props.neighborhood
-          ? this.state.filteredApts.length > 1
+          ? this.props.neighborhood.apartments.length > 1
             ? this.showArrowLeft()
             : null
           : null}
         {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()}
         {this.props.neighborhood
-          ? this.state.filteredApts.length > 1
+          ? this.props.neighborhood.apartments.length > 1
             ? this.showArrowRight()
             : null
           : null}

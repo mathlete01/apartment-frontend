@@ -59,7 +59,7 @@ class Body extends Component {
   };
 
   filterNeighborhoodsByPriceLow = () => {
-    let newArr = this.selectNeighborhoods().map((neighborhood) => ({
+    let newArr = this.filterDislikedApartments().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
       apartments: neighborhood.apartments.filter((apt) => {
@@ -85,7 +85,7 @@ class Body extends Component {
   };
 
   filterNeighborhoodsByPriceHigh = () => {
-    let newArr = this.selectNeighborhoods().map((neighborhood) => ({
+    let newArr = this.filterDislikedApartments().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
       apartments: neighborhood.apartments.filter((apt) => {
@@ -111,7 +111,7 @@ class Body extends Component {
   };
 
   filterNeighborhoodsByPriceCenter = () => {
-    let newArr = this.selectNeighborhoods().map((neighborhood) => ({
+    let newArr = this.filterDislikedApartments().map((neighborhood) => ({
       id: neighborhood.id,
       name: neighborhood.name,
       apartments: neighborhood.apartments.filter((apt) => {
@@ -145,8 +145,12 @@ class Body extends Component {
   };
 
   filterDislikedApartments = () => {
-    let newArr = this.selectNeighborhoods().map(neighborhood => 
-    )
+    let newArr = this.selectNeighborhoods().map(neighborhood => ({
+      id: neighborhood.id,
+      name: neighborhood.name,
+      apartments: neighborhood.apartments.filter((apt) => !this.state.dislikedApartments.includes(apt.id))
+    }))
+    return newArr
   }
 
   updateSelectedNeighborhoods = (neighborhoodArray) => {

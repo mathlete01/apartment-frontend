@@ -30,7 +30,7 @@ class Row_ extends Component {
           className="border-right nav-color d-flex flex-column align-items-center justify-content-center"
           md={1}
         >
-          <p className="text-center">{this.props.name}</p>
+          <p className="text-center">{this.props.name ? this.props.name : 'loading...'}</p>
         </Col>
           <div className="tile-container d-flex justify-content-around">
             <TileContainer id="outer" className="pinstripeDark-color" 

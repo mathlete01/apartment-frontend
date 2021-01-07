@@ -32,13 +32,6 @@ class TileContainer extends Component {
     });
   };
 
-  // componentDidMount(){
-  //   //build function
-  //   this.setState({
-  //     filteredApts: this.props.neighborhood.apartments
-  //   })
-  // }
-
   apartmentIsDisliked = (id) => {
     return !!this.props.dislikedApts.find(aptId => id === aptId)
   }
@@ -54,12 +47,12 @@ class TileContainer extends Component {
     likedApts={this.props.likedApts} 
     handleDislike = {this.props.handleDislike}
     dislikedApts = {this.props.dislikedApts}
-    apartmentIsDisliked = {this.apartmentIsDisliked}/> : null;
+    apartmentIsDisliked = {this.apartmentIsDisliked}/> : <TileBlank/>;
   };
 
   buildTileBlank = () => {
     console.log("BLANK");
-    return <TileBlank className="tiles" />;
+    return <TileBlank/>;
   };
 
   showArrowLeft = () => {

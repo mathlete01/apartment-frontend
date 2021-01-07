@@ -46,15 +46,6 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, dislikedApts, ap
         }
     }
 
-    // const apartmentIsDisliked = () => {
-    //   return !!dislikedApts.find(aptId => apartment.id === aptId)
-    // }
-
-    // const [dislike, setDisliked] = useState(false)
-    // const handleDislike = e => {
-    //   setDisliked(!dislike)
-    // }
-
     //controlled carousel 
     const renderCarousel = () => {
         return apartment.images.map(image => 

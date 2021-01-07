@@ -48,12 +48,13 @@ class TileContainer extends Component {
     likedApts={this.props.likedApts} 
     handleDislike = {this.props.handleDislike}
     dislikedApts = {this.props.dislikedApts}
-    apartmentIsDisliked = {this.apartmentIsDisliked}/> : <TileBlank/>;
+    apartmentIsDisliked = {this.apartmentIsDisliked}/> : <TileBlank loadingTile={ false }/>; // BLANK TILE
   };
 
   buildTileBlank = () => {
+    // LOADING TILE
     console.log("BLANK");
-    return <TileBlank/>;
+    return <TileBlank loadingTile={ true }/>;
   };
 
   showArrowLeft = () => {

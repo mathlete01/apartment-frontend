@@ -84,19 +84,11 @@ div.modal-dialog {
 div.shadow.card {
   margin: 2% 5%;
 }
-/* 
-div.card {
-  margin: 2% 5%
-} */
 
-/* .circle {
-  border-radius: 50%;
-  background-color: rgb(56, 56, 56);
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-} */
+div.blank.card {
+  margin: 2% 5%;
+  width: 100%;
+}
 
 .circle > p {
   text-align: center;
@@ -123,10 +115,6 @@ h5 {
   margin: 0.4rem 0.4rem;
   max-width: 350px;
 }
-
-/* .tile-row {
-  flex-grow: 1;
-} */
 
 .spec-container > span {
   font-size: 0.75rem;

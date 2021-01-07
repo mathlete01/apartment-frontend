@@ -43,7 +43,7 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisli
     }
 
     const renderLike = () => {
-      if(display && apartmentIsLiked()) {
+      if(apartmentIsLiked()) {
         return <FaThumbsUp color="green" size="30px" onClick={handleLikeEvent}/>
       }
       else if(display && apartmentIsLiked()===false){

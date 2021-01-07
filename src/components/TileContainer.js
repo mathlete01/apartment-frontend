@@ -48,12 +48,12 @@ class TileContainer extends Component {
     likedApts={this.props.likedApts} 
     handleDislike = {this.props.handleDislike}
     dislikedApts = {this.props.dislikedApts}
-    apartmentIsDisliked = {this.apartmentIsDisliked}/> : null;
+    apartmentIsDisliked = {this.apartmentIsDisliked}/> : <TileBlank/>;
   };
 
   buildTileBlank = () => {
     console.log("BLANK");
-    return <TileBlank className="tiles" />;
+    return <TileBlank/>;
   };
 
   showArrowLeft = () => {

@@ -14,15 +14,6 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisli
 
     //like / dislike buttons
     const [display, setDisplay] = useState(false);
-    const showButton = e => {
-        e.preventDefault();
-        setDisplay(true);
-    };
-
-    const hideButton = e => {
-        e.preventDefault();
-        setDisplay(false);
-    };
 
     const handleLikeEvent = e => {
       if (!handleLike) return
@@ -48,6 +39,27 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisli
       }
       else{
         handleDislike("dislike", apartment.id)
+      }
+    }
+
+    const renderLike = () => {
+      if(display && apartmentIsLiked()) {
+        return <FaThumbsUp color="green" size="30px" onClick={handleLikeEvent}/>
+      }
+      else if(display && apartmentIsLiked()===false){
+        return <FaRegThumbsUp color="green" size="30px" onClick={handleLikeEvent}/>
+      }
+      else if(display===false){
+        return <FaThumbsUp color="white" size="30px"/>
+      }
+    }
+
+    const renderDislike = () => {
+      if(display && apartmentIsDisliked()===false){
+        return <FaRegThumbsDown color="red" size="30px" onClick={handleDislikeEvent}/>
+      }
+      else{
+        return <FaRegThumbsDown color="white" size="30px"/>
       }
     }
 
@@ -119,7 +131,7 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisli
 
     return (
         <>
-        <Card className="shadow" onMouseEnter={e => showButton(e)} onMouseLeave={e => hideButton(e)} onClick={ handleClick }>
+        <Card className="shadow" onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)} onClick={ handleClick }>
             <Carousel className='flex-grow-1' activeIndex={index} onSelect={handleSelect} interval={null}>
                 {renderCarousel()}
             </Carousel>
@@ -130,10 +142,13 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisli
                 <BiRadioCircle/>
                 <span>${apartment.price}</span>
             </Container>
-            <div className="d-flex justify-content-between align-items-center">
-                {apartmentIsDisliked() ? <FaThumbsDown color="red" size="35px" onClick={handleDislikeEvent}/> : <FaRegThumbsDown color="red" size="35px" onClick={handleDislikeEvent}/> }
-                <h6 className='card-title' style={{width: '20rem'}}>{apartment.title}</h6>
-                {apartmentIsLiked() ? <FaThumbsUp color="green" size="35px" onClick={handleLikeEvent}/> : <FaRegThumbsUp color="green" size="35px" onClick={handleLikeEvent}/>}    
+            <div className="d-flex align-items-center">
+                {renderDislike()}
+                {/* {display && (apartmentIsDisliked() ? <FaThumbsDown color="red" size="30px" onClick={handleDislikeEvent}/> : <FaRegThumbsDown color="red" size="30px" onClick={handleDislikeEvent}/> )} */}
+                <h6 className='card-title'>{apartment.title}</h6>
+                {renderLike()}
+                {/* {display && (apartmentIsLiked() ? <FaThumbsUp color="green" size="30px" onClick={handleLikeEvent}/> : <FaRegThumbsUp color="green" size="30px" onClick={handleLikeEvent}/>)}     */}
+
             </div>
         </Card>
         <CenteredModal

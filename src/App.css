@@ -65,6 +65,13 @@ body {
   height: 100%;
 }
 
+.carousel-indicators li {
+  position: relative !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 100% !important;
+}
+
 .modal-body > .carousel.slide {
   height: 300px;
 }

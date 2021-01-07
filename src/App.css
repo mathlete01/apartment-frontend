@@ -65,6 +65,13 @@ body {
   height: 100%;
 }
 
+.carousel-indicators li {
+  position: relative !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 100% !important;
+}
+
 .modal-body > .carousel.slide {
   height: 300px;
 }
@@ -114,6 +121,13 @@ h5 {
   text-align: center;
   margin: 0.4rem 0.4rem;
   max-width: 350px;
+}
+
+h6 {
+  text-align: center;
+  width: 20rem;
+  /* margin-left: 30px;
+  margin-right: 30px; */
 }
 
 .spec-container > span {

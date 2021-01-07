@@ -6,7 +6,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 class TileContainer extends Component {
   state = {
-    counter: 0
+    counter: 0,
   };
 
   nextApt = () => {
@@ -35,28 +35,32 @@ class TileContainer extends Component {
   };
 
   apartmentIsDisliked = (id) => {
-    if (!this.props.dislikedApts) return
-    return !!this.props.dislikedApts.find(aptId => id === aptId)
-  }
+    if (!this.props.dislikedApts) return;
+    return !!this.props.dislikedApts.find((aptId) => id === aptId);
+  };
 
   buildTile = () => {
     let apt = this.props.neighborhood.apartments[this.state.counter];
     if (apt && this.apartmentIsDisliked(apt.id)) return;
-    return apt ?
-    <Tile 
-    apartment={apt} 
-    className="tile" 
-    handleLike={this.props.handleLike} 
-    likedApts={this.props.likedApts} 
-    handleDislike = {this.props.handleDislike}
-    dislikedApts = {this.props.dislikedApts}
-    apartmentIsDisliked = {this.apartmentIsDisliked}/> : <TileBlank loadingTile={ false }/>; // BLANK TILE
+    return apt ? (
+      <Tile
+        apartment={apt}
+        className="tile"
+        handleLike={this.props.handleLike}
+        likedApts={this.props.likedApts}
+        handleDislike={this.props.handleDislike}
+        dislikedApts={this.props.dislikedApts}
+        apartmentIsDisliked={this.apartmentIsDisliked}
+      />
+    ) : (
+      <TileBlank loadingTile={false} />
+    ); // BLANK TILE
   };
 
   buildTileBlank = () => {
     // LOADING TILE
     console.log("BLANK");
-    return <TileBlank loadingTile={ true }/>;
+    return <TileBlank loadingTile={true} />;
   };
 
   showArrowLeft = () => {
@@ -90,7 +94,6 @@ class TileContainer extends Component {
   };
 
   render() {
-    // debugger;
     return (
       <Container
         className="tile d-flex justify-content-center align-items-stretch"

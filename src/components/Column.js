@@ -11,25 +11,36 @@ class Column extends Component {
     return (
       <Container className="nav-color border-bottom" bg="light" fluid>
         <Row>
-          <Col md={1} className="filter-box border-bottom border-right text-center">
+          <Col
+            md={1}
+            className="filter-box border-bottom border-right text-center"
+          >
             <NeighborhoodDropdown
               handleNeighborhoodChange={this.props.handleNeighborhoodChange}
               neighborhoods={this.props.neighborhoods}
               selectedIDs={this.props.selectedIDs}
-              updateBedrooms = {this.props.updateBedrooms}
+              updateBedrooms={this.props.updateBedrooms}
             />
           </Col>
-
-          <BsChevronDoubleLeft 
-            size='2em' 
-            className='price-arrow' 
-            onClick={() =>
+          {this.props.priceLow <= 100 ? (
+            <BsChevronDoubleLeft
+              size="2em"
+              className="price-arrow"
+              color="d8d8d8"
+            />
+          ) : (
+            <BsChevronDoubleLeft
+              size="2em"
+              className="price-arrow"
+              color="black"
+              onClick={() =>
                 this.props.updatePrice(
                   this.props.priceLow - 100,
                   this.props.priceHigh - 100
                 )
               }
-          />
+            />
+          )}
 
           <Col className="d-flex align-items-center justify-content-center">
             <div>
@@ -49,17 +60,26 @@ class Column extends Component {
             </div>
           </Col>
 
-          <BsChevronDoubleRight 
-            size='2em' 
-            className='price-arrow' 
-            onClick={() =>
+          
+          {this.props.priceHigh >= 29900 ? (
+            <BsChevronDoubleRight
+              size="2em"
+              className="price-arrow"
+              color="d8d8d8"
+            />
+          ) : (
+            <BsChevronDoubleRight
+              size="2em"
+              className="price-arrow"
+              color="black"
+              onClick={() =>
                 this.props.updatePrice(
                   this.props.priceLow + 100,
                   this.props.priceHigh + 100
                 )
               }
-          />
-          
+            />
+          )}
         </Row>
       </Container>
     );

@@ -146,12 +146,10 @@ const Tile = ({isLandingPage, apartment, handleLike, likedApts, handleDislike, a
                 <BiRadioCircle/>
                 <span>${apartment.price}</span>
             </Container>
-            <div className="d-flex align-items-center">
+            <div className="d-flex justify-content-center align-items-center">
                 {renderDislike()}
-                {/* {display && (apartmentIsDisliked() ? <FaThumbsDown color="red" size="30px" onClick={handleDislikeEvent}/> : <FaRegThumbsDown color="red" size="30px" onClick={handleDislikeEvent}/> )} */}
                 <h6 className='card-title'>{apartment.title}</h6>
                 {renderLike()}
-                {/* {display && (apartmentIsLiked() ? <FaThumbsUp color="green" size="30px" onClick={handleLikeEvent}/> : <FaRegThumbsUp color="green" size="30px" onClick={handleLikeEvent}/>)}     */}
 
             </div>
         </Card>

@@ -41,10 +41,9 @@ const Landing = () => {
         <Container id='landing-page' className='d-flex justify-content-start align-items-stretch' fluid>
             <div className='flex-grow-1'>
                 <Jumbotron id='welcome-box' className='shadow'>
-                    <h1>Hello, world!</h1>
+                    <h1>Welcome to ApartmentFindr!</h1>
                     <p>
-                        This is a simple hero unit, a simple jumbotron-style component for calling
-                        extra attention to featured content or information.
+                        Looking for an apartment can tend to be an overwhelming experience...but it doesn't have to be! With ApartmentFindr, search through apartment listings tailored to your price points and neighborhoods. It's built to keep your apartment search organized: keep track of which listings you've liked and hide any listings you're not interested in by clicking the dislike button! 
                     </p>
                     <p>
                         <NavLink exact to='browse'>Browse our listings!</NavLink>

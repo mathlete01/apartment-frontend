@@ -51,6 +51,7 @@ class TileContainer extends Component {
         handleDislike={this.props.handleDislike}
         dislikedApts={this.props.dislikedApts}
         apartmentIsDisliked={this.apartmentIsDisliked}
+        isLandingPage={ this.props.isLandingPage }
       />
     ) : (
       <TileBlank loadingTile={false} />
@@ -104,8 +105,7 @@ class TileContainer extends Component {
             ? this.showArrowLeft()
             : null
           : null}
-        {/* {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()} */}
-        {this.props.neighborhood ? this.buildTile() : null}
+        {this.props.neighborhood ? this.buildTile() : this.buildTileBlank()}
         {this.props.neighborhood
           ? this.props.neighborhood.apartments.length > 1
             ? this.showArrowRight()

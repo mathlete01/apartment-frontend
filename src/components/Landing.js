@@ -33,7 +33,7 @@ const Landing = () => {
 
     const buildSampleNeighborhoods = () => {
         return neighborhoods.map( neighborhood => (
-            <TileContainer key={ neighborhood.id } neighborhood={ neighborhood } />
+            <TileContainer isLandingPage={ true } key={ neighborhood.id } neighborhood={ neighborhood } />
         ))
     }
 

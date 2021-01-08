@@ -10,7 +10,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
-const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisliked}) => {
+const Tile = ({isLandingPage, apartment, handleLike, likedApts, handleDislike, apartmentIsDisliked}) => {
 
     //like / dislike buttons
     const [display, setDisplay] = useState(false);
@@ -27,7 +27,7 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisli
     }
 
     const apartmentIsLiked = () => {
-      if (!likedApts) return
+      if (!likedApts) return false
       return !!likedApts.find(aptId => apartment.id === aptId)
     }
 
@@ -43,6 +43,10 @@ const Tile = ({apartment, handleLike, likedApts, handleDislike, apartmentIsDisli
     }
 
     const renderLike = () => {
+      if (isLandingPage) {
+        return <FaThumbsUp color="white" size="30px"/>
+      }
+
       if(apartmentIsLiked()) {
         return <FaThumbsUp color="green" size="30px" onClick={handleLikeEvent}/>
       }
